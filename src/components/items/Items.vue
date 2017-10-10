@@ -1,31 +1,14 @@
 <template>
   <div class="container is-fluid">
-    <div class="columns is-gapless is-mobile">
-      <div class="column">
-        <div class="image-item">
-            <img class="is-96x96" src="../../assets/images-menu/1.jpg"/>
-            <div class="text-background"></div>
-            <div class="text">
-              บิงซูสตอเบอรี่
-            </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="image-item">
-            <img src="../../assets/images-menu/2.jpg"/>
-            <div class="text-background"></div>
-            <div class="text">
-              นมน้ำผึ้ง
-            </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="image-item">
-            <img src="../../assets/images-menu/3.jpg"/>
-            <div class="text-background"></div>
-            <div class="text">
-              บิงซูบลูเบอรี่
-            </div>
+    <div class="columns is-gapless is-mobile" v-for="(item, index) in items" :key="index">
+      <div class="column is-4" v-for="(value, key) in item" :key="key" @click="addOrder(value)">
+        <div class="notify-container">
+          <span class="notify-bubble" v-if="order[value.name]">{{ order[value.name].amount }}</span>
+          <img class="is-96x96" src="../../assets/images-menu/2.jpg"/>
+          <div class="text-background"></div>
+          <div class="text">
+            {{ value.name }}
+          </div>
         </div>
       </div>
     </div>
@@ -33,16 +16,35 @@
 </template>
 
 <script>
+import db from '../../firebase.conf'
+
 export default {
   props: [],
+  firebase: {
+    nomkafe: db.ref('nomkafe')
+  },
   name: 'items',
   components: {},
   data () {
     return {
-      msg: 'Items'
+      items: this.$store.state.items,
+      order: this.$store.state.orderList
     }
   },
-  methods: {},
+  methods: {
+    addOrder (item) {
+      this.$store.state.order = {
+        desk: 5,
+        name: item.name,
+        amount: 1,
+        price: item.price,
+        status: 'NEW',
+        time: new Date().toString()
+      }
+
+      this.$store.commit('addOrder', item.name)
+    }
+  },
   mounted () {
   }
 }
@@ -71,5 +73,22 @@ export default {
   width: 90%;
   height: 22px;
   background: black;
+}
+
+.notify-container {
+  position: relative;
+	display: inline-block;
+}
+
+.notify-bubble {
+  position: absolute;
+  top: -8px;
+  right: -7px;
+  padding: 2px 5px 2px 6px;
+  background-color: green;
+  color: white;
+  font-size: 0.65em;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px gray;
 }
 </style>

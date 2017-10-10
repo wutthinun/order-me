@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '@/components/Index'
+// import Index from '@/components/Index'
 import Cooking from '@/components/Cooking'
 import Billing from '@/components/Bill'
 import Prototype from '@/components/Prototype'
+import Cart from '@/components/cart/Cart'
 
 Vue.use(Router)
 
@@ -12,7 +13,7 @@ export default new Router({
     {
       path: '/',
       name: 'Order',
-      component: Index
+      component: Prototype
     },
     {
       path: '/cooking',
@@ -28,6 +29,11 @@ export default new Router({
       path: '/prototype',
       name: 'Prototype',
       component: Prototype
+    },
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: Cart
     }
   ]
 })

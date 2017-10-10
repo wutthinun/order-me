@@ -8,10 +8,13 @@
           <span class="icon" style="color: #2544E3;">
             <strong>ORDER</strong>ME</span>
         </a>
-        <a class="navbar-item" href="#" target="_blank">
-          <span class="icon">
-            <i class="fa fa-lg fa-shopping-cart fa-flip-horizontal"></i>
-          </span>
+        <a class="navbar-item" @click="goToCart" target="_blank">
+          <div class="notify-container">
+            <span class="notify-bubble" v-if="getAmount != 0">{{ getAmount }}</span>
+            <span class="icon">
+                  <i class="fa fa-lg fa-shopping-cart fa-flip-horizontal"></i>
+                </span>
+          </div>
         </a>
         <div style="color: #2544E3;" :class="['navbar-burger', 'burger', { 'is-active' : menuIsActive } ]" v-on:click="toggleMenu()" data-target="navMenuDocumentation">
           <span></span>
@@ -35,7 +38,7 @@
     <menus/>
     <hr class="line">
     <items />
-    <button class="button is-info is-outlined is-large order-button">
+    <button class="button is-info is-outlined is-large order-button" @click="goToCart">
       <span class="icon is-small order-icon">
          <i class="fa fa-lg fa-shopping-cart"></i>
       </span>
@@ -57,15 +60,24 @@ export default {
   data () {
     return {
       msg: 'Prototype',
-      menuIsActive: false
+      menuIsActive: false,
+      amount: this.$store.getters.amount
     }
   },
   methods: {
     toggleMenu () {
       this.menuIsActive = !this.menuIsActive
+    },
+    goToCart () {
+      this.$router.push({path: 'cart'})
     }
   },
   mounted () {
+  },
+  computed: {
+    getAmount () {
+      return this.$store.getters.amount
+    }
   }
 }
 </script>

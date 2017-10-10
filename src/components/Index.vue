@@ -5,7 +5,7 @@
         <order-list :orders="orders" :price="price" @increment="increment" @decrement="decrement" @sendOrder="sendOrder" ></order-list>
       </div>
       <div class="column">
-        <item-list @orders="addOrder" :items="items" :tmpItem="tmpItem"></item-list>
+        <item-list @orders="addOrder" :items="items" :tmpitem="tmpitem"></item-list>
       </div>
     </div>
 	</div>

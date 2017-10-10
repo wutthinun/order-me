@@ -5,15 +5,15 @@
         <a class="navbar-item" href="#">
           <i class="fa fa-chevron-left" aria-hidden="true"></i>
         </a>
-        <a class="navbar-item" href="#">
+        <a class="navbar-item" @click="router.back()">
           <strong>หมายเลขโต๊ะ 25</strong>
         </a>
       </div>
     </nav>
     <hr class="line">
-    <strong>ทั้งหมด 8 รายการ</strong>
+    <strong>ทั้งหมด {{ amount }} รายการ</strong>
     <hr class="line">
-    <div class="container is-fluid">
+    <div class="container is-fluid" style="margin-bottom: 2px" v-for="(item, index) in order" :key="index">
       <article class="media">
         <figure class="media-left">
           <p class="image is-64x64">
@@ -25,16 +25,16 @@
             <div class="columns is-mobile is-gapless">
               <div class="column is-half">
                 <p>
-                  <strong><small>บิงซูสตอเบอรี่</small></strong>
+                  <strong><small>{{ item.name }}</small></strong>
                   <br>
-                  ราคา 180฿
+                  ราคา {{ item.price }} ฿
                 </p>
               </div>
               <div class="column is-1">
                 <small>X</small>
               </div>
-              <div class="column"><strong><small>1</small></strong></div>
-              <div class="column is-2"><strong><small>180฿</small></strong></div>
+              <div class="column"><strong><small>{{ item.amount }}</small></strong></div>
+              <div class="column is-2"><strong><small>{{ item.price * item.amount }} ฿</small></strong></div>
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@
     <div class="columns total">
       <hr class="line">
       <div class="column is-offset-8">
-        <strong>รวมเป็นเงิน 180฿</strong>
+        <strong>รวมเป็นเงิน {{ total }} ฿</strong>
       </div>
       <button class="button is-success is-outlined is-large order-button">
       <span class="icon is-small order-icon">
@@ -63,8 +63,10 @@ export default {
   components: {},
   data () {
     return {
-      msg: 'Cart',
-      menuIsActive: false
+      menuIsActive: false,
+      order: this.$store.state.orderList,
+      total: this.$store.state.total,
+      amount: this.$store.state.amount
     }
   },
   methods: {
