@@ -14,12 +14,6 @@ var firebaseApp = Firebase.initializeApp({
   storageBucket,
   messagingSenderId
 })
-console.log(apiKey)
-console.log(authDomain)
-console.log(databaseURL)
-console.log(projectId)
-console.log(storageBucket)
-console.log(messagingSenderId)
 
 var db = firebaseApp.database()
 
