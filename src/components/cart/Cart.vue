@@ -46,20 +46,25 @@
       <div class="column is-offset-8">
         <strong>รวมเป็นเงิน {{ total }} ฿</strong>
       </div>
-      <button class="button is-success is-outlined is-large order-button">
-      <span class="icon is-small order-icon">
-         <i class="fa fa-lg fa-shopping-cart"></i>
-      </span>
-      ยืนยัน
+      <button class="button is-success is-outlined is-large order-button" @click="sendOrder">
+        <span class="icon is-small order-icon">
+          <i class="fa fa-lg fa-shopping-cart"></i>
+        </span>
+        ยืนยัน
     </button>
     </div>
   </div>
 </template>
 
 <script>
+import db from '../../firebase.conf'
+
 export default {
   props: [],
   name: 'cart',
+  firebase: {
+    nomkafe: db.ref('nomkafe')
+  },
   components: {},
   data () {
     return {
@@ -72,6 +77,22 @@ export default {
   methods: {
     toggleMenu () {
       this.menuIsActive = !this.menuIsActive
+    },
+    sendOrder () {
+      console.log(this.$store.state.orderKey)
+      if (this.$store.state.orderKey) {
+        console.log('update')
+        this.$firebaseRefs.nomkafe.child('order').child(this.$store.state.orderKey).update(this.order, (error) => {
+          if (error) {
+            console.error('ERROR: ', error)
+          } else {
+            console.info('Update success')
+          }
+        })
+      } else {
+        console.log('save')
+        this.$store.state.orderKey = this.$firebaseRefs.nomkafe.child('order').push(this.order).key
+      }
     }
   },
   mounted () {

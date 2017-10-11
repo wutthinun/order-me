@@ -1,9 +1,9 @@
 <template>
   <div class="container is-fluid">
     <div class="columns is-gapless is-mobile" v-for="(item, index) in items" :key="index">
-      <div class="column is-4" v-for="(value, key) in item" :key="key" @click="addOrder(value)">
+      <div class="column is-4" v-for="(value, key) in item" :key="key" @click="addOrder(value, key)">
         <div class="notify-container">
-          <span class="notify-bubble" v-if="order[value.name]">{{ order[value.name].amount }}</span>
+          <span class="notify-bubble" v-if="order[key]">{{ order[key].amount }}</span>
           <img class="is-96x96" src="../../assets/images-menu/2.jpg"/>
           <div class="text-background"></div>
           <div class="text">
@@ -32,7 +32,7 @@ export default {
     }
   },
   methods: {
-    addOrder (item) {
+    addOrder (item, key) {
       this.$store.state.order = {
         desk: 5,
         name: item.name,
@@ -42,7 +42,7 @@ export default {
         time: new Date().toString()
       }
 
-      this.$store.commit('addOrder', item.name)
+      this.$store.commit('addOrder', key)
     }
   },
   mounted () {
