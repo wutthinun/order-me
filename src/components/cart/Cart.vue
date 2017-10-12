@@ -79,7 +79,6 @@ export default {
       this.menuIsActive = !this.menuIsActive
     },
     sendOrder () {
-      console.log(this.$store.state.orderKey)
       if (this.$store.state.orderKey) {
         console.log('update')
         this.$firebaseRefs.nomkafe.child('order').child(this.$store.state.orderKey).update(this.order, (error) => {
