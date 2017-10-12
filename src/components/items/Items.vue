@@ -58,7 +58,6 @@ export default {
 .text {
   left: 0;
   position: absolute;
-  font-weight: bold;
   text-align: center;
   color: white;
   top: calc(50% - 25px/2);
