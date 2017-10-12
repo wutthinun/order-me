@@ -2,15 +2,12 @@
   <div class="container">
     <div class="box" v-for="(items, key1) in orders" :key="key1">
       <div class="columns">
-        <div class="column">
-          <button class="button is-focused is-fullwidth">Desk: {{ items.desk }}</button>
+        <div class="column is-12">
+          <label class="">Desk: {{ items.desk }}</label>
         </div>
         <div class="column is-hidden-mobile"></div>
         <div class="column is-hidden-mobile"></div>
         <div class="column is-hidden-mobile"></div>
-        <div class="column">
-          <button class="button is-success is-fullwidth" @click="done(key1)">Done</button>
-        </div>
       </div>
       <table class="table is-fullwidth">
         <thead>
@@ -28,8 +25,11 @@
           </tr>
         </tbody>
       </table>
+      <div class="column">
+        <button class="button is-success is-fullwidth" @click="done(key1)">Done</button>
+      </div>
     </div>
-  </div> 
+  </div>
 </template>
 <script>
 import db from '../firebase.conf'
