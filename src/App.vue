@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <main>
-      <nav class="navbar has-shadow">
+      <!-- <nav class="navbar has-shadow">
         <div class="container" style="justify-content: center;">
           <div class="navbar-tabs">
             <router-link to="/" :class="[ 'navbar-item', 'is-tab', { 'is-active' : false } ]">Order</router-link>
@@ -9,8 +9,8 @@
             <router-link to="/billing" :class="[ 'navbar-item', 'is-tab', {'is-active': false } ]">Bill</router-link>
           </div>
         </div>
-      </nav>
-      <section class="section">
+      </nav> -->
+      <section>
         <router-view></router-view>
       </section>
     </main>
@@ -50,7 +50,7 @@ body {
 
 main {
   text-align: center;
-  margin-top: 40px;
+  /* margin-top: 60px; */
 }
 
 header {

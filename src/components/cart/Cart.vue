@@ -51,7 +51,7 @@
           <i class="fa fa-lg fa-shopping-cart"></i>
         </span>
         ยืนยัน
-    </button>
+      </button>
     </div>
   </div>
 </template>
@@ -105,9 +105,9 @@ strong {
     font-weight: 900;
 }
 
-section {
+/* section {
   padding: 0 0 0 0.3em!important;
-}
+} */
 
 .line {
   margin: .2rem .2rem .2rem .2rem;

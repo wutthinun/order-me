@@ -1,39 +1,27 @@
 <template>
   <div>
-    <nav class="navbar">
-      <div class="navbar-brand">
-         <a class="navbar-item" href="#">
-        </a>
-        <a class="navbar-item" href="#">
-          <span class="icon" style="color: #2544E3;">
-            <strong>ORDER</strong>ME</span>
-        </a>
-        <a class="navbar-item" @click="goToCart" target="_blank">
-          <div class="notify-container">
-            <span class="notify-bubble" v-if="getAmount != 0">{{ getAmount }}</span>
-            <span class="icon">
+    <section class="hero is-medium">
+      <div class="hero-body" style=" padding: 1rem;">
+        <div class="container">
+          <div class="columns is-mobile">
+            <div class="column is-2">
+              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </div>
+            <div class="column">
+              <span style="color: #2544E3;"><strong>ORDER</strong>ME</span>
+            </div>
+            <div class="column is-2" @click="goToCart">
+              <div class="notify-container">
+                <span class="notify-bubble" v-if="getAmount != 0">{{ getAmount }}</span>
+                <span class="icon">
                   <i class="fa fa-lg fa-shopping-cart fa-flip-horizontal"></i>
                 </span>
-          </div>
-        </a>
-        <div style="color: #2544E3;" :class="['navbar-burger', 'burger', { 'is-active' : menuIsActive } ]" v-on:click="toggleMenu()" data-target="navMenuDocumentation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-      <div id="navMenuDocumentation" :class="['navbar-menu', { 'is-active' : menuIsActive}]">
-        <div class="navbar-start">
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link  is-active" href="#">
-              About Me
-            </a>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="navbar-end">
-        </div>
       </div>
-    </nav>
+    </section>
     <hr class="line">
     <menus/>
     <hr class="line">
@@ -87,9 +75,9 @@ strong {
     font-weight: 900;
 }
 
-section {
+/* section {
   padding: 0 0 0 0.3em!important;
-}
+} */
 
 .line {
   margin: .2rem .2rem .2rem .2rem;
@@ -110,4 +98,5 @@ section {
 .order-icon {
   margin-right: 0.1em!important;
 }
+
 </style>

@@ -85,7 +85,7 @@ export default {
   top: -8px;
   right: -7px;
   padding: 2px 5px 2px 6px;
-  background-color: green;
+  background-color: #C88E51;
   color: white;
   font-size: 0.65em;
   border-radius: 50%;

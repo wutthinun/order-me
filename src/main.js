@@ -21,7 +21,6 @@ new Vue({
     nomkafe: db.ref('nomkafe')
   },
   mounted () {
-    console.log(this.$store.state.orderList)
     this.$firebaseRefs.nomkafe.child('items').on('value', snapshot => {
       this.items = snapshot.val()
       const metrix = 3
