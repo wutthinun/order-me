@@ -36,13 +36,16 @@ export default {
 <style scoped>
 @import "../node_modules/bulma/css/bulma.css";
 @import "../node_modules/font-awesome/css/font-awesome.css";
+/* @import url('https://fonts.googleapis.com/css?family=Itim&subset=thai'); */
+@import url('https://fonts.googleapis.com/css?family=Mitr&subset=thai');
 
 body {
   margin: 0;
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  /* font-family: 'Itim', cursive; */
+  font-family: 'Mitr', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;

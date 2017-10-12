@@ -84,15 +84,12 @@ strong {
 }
 
 .order-button {
-  display: block;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 8px;
-  position: absolute;
   right:    0;
   bottom:   0;
+    margin: 0 2vw;
+    width: calc(100% - 4vw);
+    bottom: 2vw;
+    position: fixed;
 }
 
 .order-icon {

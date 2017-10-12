@@ -53,26 +53,23 @@ export default {
 <style>
 .image-item {
     position:relative;
+    padding: 10px;
+}
+
+.image-item > img {
+  width: 100%;
 }
 
 .text {
-    left: 0;
-    position:absolute;
-    font-weight: bold;
-    text-align:center;
-    color: white;
-    top: 35px;
-    width: 100%;
-}
-
-.text-background {
-  opacity: 0.6;
+  left: 0;
   position: absolute;
-  top: 35px;
-  left: 5%;
-  width: 90%;
-  height: 22px;
-  background: black;
+  text-align: center;
+  color: white;
+  top: calc(50% - 25px/2);
+  line-height: 25px;
+  width: calc(100% - 28px);
+  margin: 0 14px;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .notify-container {
