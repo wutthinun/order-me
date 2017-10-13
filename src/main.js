@@ -18,9 +18,10 @@ new Vue({
   components: { App },
   store,
   firebase: {
-    nomkafe: db.child('123456789')
+    nomkafe: db.child(sessionStorage.getItem('shopid') || '123456789')
   },
   mounted () {
+    console.log(this.$firebaseRefs.nomkafe)
     this.$firebaseRefs.nomkafe.child('items').on('value', snapshot => {
       this.items = snapshot.val()
       const metrix = 3

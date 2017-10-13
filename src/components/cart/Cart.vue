@@ -6,7 +6,7 @@
           <i class="fa fa-chevron-left" aria-hidden="true"></i>
         </a>
         <a class="navbar-item" @click="router.back()">
-          <strong>หมายเลขโต๊ะ 25</strong>
+          <strong>หมายเลขโต๊ะ {{ desk }}</strong>
         </a>
       </div>
     </nav>
@@ -71,7 +71,8 @@ export default {
       menuIsActive: false,
       order: this.$store.state.orderList,
       total: this.$store.state.total,
-      amount: this.$store.state.amount
+      amount: this.$store.state.amount,
+      desk: sessionStorage.getItem('desk')
     }
   },
   methods: {
@@ -81,7 +82,7 @@ export default {
     sendOrder () {
       const order = {
         item: this.order,
-        desk: 5,
+        desk: this.desk,
         price: this.total,
         time: new Date().toString()
       }

@@ -5,10 +5,11 @@ import Cooking from '@/components/Cooking'
 import Billing from '@/components/Bill'
 import Prototype from '@/components/Prototype'
 import Cart from '@/components/cart/Cart'
+import CheckIn from '@/components/checkin/CheckIn'
 
 Vue.use(Router)
 
-export default new Router({
+const myrouter = new Router({
   routes: [
     {
       path: '/',
@@ -39,6 +40,25 @@ export default new Router({
       path: '/cart',
       name: 'Cart',
       component: Cart
+    },
+    {
+      path: '/checkin',
+      name: 'CheckIn',
+      component: CheckIn
     }
   ]
 })
+
+myrouter.beforeEach((to, from, next) => {
+  if (to.name === 'CheckIn' && to.query.desk && to.query.shopid) {
+    sessionStorage.setItem('desk', to.query.desk)
+    sessionStorage.setItem('shopid', to.query.shopid)
+    next({name: 'Order'})
+  } else if (to.name === 'Order' && !sessionStorage.getItem('desk') && !sessionStorage.getItem('shopid')) {
+    next({name: 'CheckIn'})
+  } else {
+    next()
+  }
+})
+
+export default myrouter
