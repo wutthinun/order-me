@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import db from '../firebase.conf'
+import auth from '@/services/auth'
 
 export default {
   data () {
@@ -77,14 +77,12 @@ export default {
     },
     doLogin () {
       this.isLoading = true
-      db.ref('shop_id').child(this.shopId).once('value').then(snapshot => {
-        if (snapshot.val()) {
-          localStorage.setItem('shop_id', this.shopId)
+      auth.login(this.shopId).then(success => {
+        if (success) {
           this.$router.push({path: 'menus'})
-        } else {
-          this.isInvalid = true
+          return
         }
-      }).then(() => {
+        this.isInvalid = true
         this.isLoading = false
       })
     }
