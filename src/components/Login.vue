@@ -40,7 +40,7 @@
                     <p v-if="isInvalid" class="help is-danger">ไม่พบรหัสร้านนี้</p>
                   </div>
                   <p class="control login">
-                    <button @click="doLogin" class="button is-success is-outlined is-large is-fullwidth">Login</button>
+                    <button @click="doLogin" :class="['button is-success is-large is-fullwidth', {'is-loading': isLoading}]" :disabled="isDisabled">Login</button>
                   </p>
                 </div>
                 <div class="section forgot-password">
@@ -64,21 +64,27 @@ import db from '../firebase.conf'
 export default {
   data () {
     return {
+      shopId: '',
       isInvalid: false,
-      shopId: ''
+      isDisabled: true,
+      isLoading: false
     }
   },
   methods: {
     onChangeShopId () {
       this.isInvalid = false
+      this.isDisabled = !this.shopId
     },
     doLogin () {
-      db.ref('/shop_id/' + this.shopId).once('value').then(snapshot => {
+      this.isLoading = true
+      db.ref('shop_id').child(this.shopId).once('value').then(snapshot => {
         if (snapshot.val()) {
           this.$router.push({path: 'menus'})
         } else {
           this.isInvalid = true
         }
+      }).then(() => {
+        this.isLoading = false
       })
     }
   }
