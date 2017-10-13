@@ -51,15 +51,6 @@ export default {
 </script>
 
 <style>
-.image-item {
-    position:relative;
-    padding: 10px;
-}
-
-.image-item > img {
-  width: 100%;
-}
-
 .text {
   left: 0;
   position: absolute;
