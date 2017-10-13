@@ -59,6 +59,8 @@
 </template>
 
 <script>
+import db from '../firebase.conf'
+
 export default {
   data () {
     return {
@@ -71,11 +73,13 @@ export default {
       this.isInvalid = false
     },
     doLogin () {
-      if (this.shopId === 'orderme') {
-
-      } else {
-        this.isInvalid = true
-      }
+      db.ref('/shop_id/' + this.shopId).once('value').then(snapshot => {
+        if (snapshot.val()) {
+          this.$router.push({path: 'menus'})
+        } else {
+          this.isInvalid = true
+        }
+      })
     }
   }
 }
