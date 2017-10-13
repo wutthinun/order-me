@@ -1,7 +1,7 @@
-import db from '@/firebase.conf'
+import data from '@/data/data'
 
 const login = (shopId) => {
-  return db.ref('shop_id').child(shopId).once('value').then(shop => {
+  return data.getShopById(shopId).then(shop => {
     if (shop.val()) {
       localStorage.setItem('shop_id', shopId)
       return true
