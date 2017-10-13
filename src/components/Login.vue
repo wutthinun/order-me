@@ -13,7 +13,7 @@
         <div class="hero-footer">
           <p class="has-text-centered">Image © Glenn Carstens-Peters via unsplash</p>
         </div>
-      </section>  
+      </section>
     </div>
     <div class="column is-4">
       <section class="hero is-fullheight">
@@ -30,20 +30,17 @@
                   <img src="https://placehold.it/128x128">
                 </h1>
                 <div class="login-form">
-                  <p class="control has-icon has-icon-right">
-                    <input class="input email-input" type="text" placeholder="mine@order.me">
-                    <span class="icon user">
-                      <i class="fa fa-user"></i>
-                    </span>
-                  </p>
-                  <p class="control has-icon has-icon-right">
-                    <input class="input password-input" type="password" placeholder="●●●●●●●">
-                    <span class="icon user">
-                      <i class="fa fa-lock"></i>
-                    </span>
-                  </p>
+                  <div class="field">
+                    <div class="control has-icons-left has-icons-right">
+                      <input v-model="shopId" @keyup="onChangeShopId" :class="['input', 'shop-id-input',  {'is-danger': isInvalid}]" type="text" placeholder="รหัสร้าน">
+                      <span class="icon user">
+                        <i class="fa fa-user"></i>
+                      </span>
+                    </div>
+                    <p v-if="isInvalid" class="help is-danger">ไม่พบรหัสร้านนี้</p>
+                  </div>
                   <p class="control login">
-                    <button class="button is-success is-outlined is-large is-fullwidth">Login</button>
+                    <button @click="doLogin" class="button is-success is-outlined is-large is-fullwidth">Login</button>
                   </p>
                 </div>
                 <div class="section forgot-password">
@@ -56,7 +53,7 @@
             </div>
           </div>
         </div>
-      </section>  
+      </section>
     </div>
   </div>
 </template>
@@ -64,7 +61,22 @@
 <script>
 export default {
   data () {
-    return {}
+    return {
+      isInvalid: false,
+      shopId: ''
+    }
+  },
+  methods: {
+    onChangeShopId () {
+      this.isInvalid = false
+    },
+    doLogin () {
+      if (this.shopId === 'orderme') {
+
+      } else {
+        this.isInvalid = true
+      }
+    }
   }
 }
 </script>
@@ -72,13 +84,13 @@ export default {
 <style>
 
 
-.email-input,
+.shop-id-input,
 .password-input {
   border-radius: 40px;
   font-size: 20px;
   padding-left: 15px;
   color: #95A5A6;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.3em;
 }
 
 .icon.user,
