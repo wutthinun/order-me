@@ -18,7 +18,7 @@ import BillDetail from './BillDetail'
 
 export default {
   firebase: {
-    nomkafe: db.ref('nomkafe')
+    nomkafe: db.child('123456789')
   },
   components: {
     'bill-list': BillList,

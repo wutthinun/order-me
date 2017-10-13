@@ -16,13 +16,8 @@
 </template>
 
 <script>
-import db from '../../firebase.conf'
-
 export default {
   props: [],
-  firebase: {
-    nomkafe: db.ref('nomkafe')
-  },
   name: 'items',
   components: {},
   data () {

@@ -15,6 +15,6 @@ var firebaseApp = Firebase.initializeApp({
   messagingSenderId
 })
 
-var db = firebaseApp.database()
+var db = firebaseApp.database().ref('orderme')
 
 export default db

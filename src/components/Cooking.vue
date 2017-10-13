@@ -35,7 +35,7 @@
 import db from '../firebase.conf'
 export default {
   firebase: {
-    nomkafe: db.ref('nomkafe')
+    nomkafe: db.child('123456789')
   },
   data () {
     return {

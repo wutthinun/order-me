@@ -63,7 +63,7 @@ export default {
   props: [],
   name: 'cart',
   firebase: {
-    nomkafe: db.ref('nomkafe')
+    nomkafe: db.child('123456789')
   },
   components: {},
   data () {
@@ -79,19 +79,14 @@ export default {
       this.menuIsActive = !this.menuIsActive
     },
     sendOrder () {
-      if (this.$store.state.orderKey) {
-        console.log('update')
-        this.$firebaseRefs.nomkafe.child('order').child(this.$store.state.orderKey).update(this.order, (error) => {
-          if (error) {
-            console.error('ERROR: ', error)
-          } else {
-            console.info('Update success')
-          }
-        })
-      } else {
-        console.log('save')
-        this.$store.state.orderKey = this.$firebaseRefs.nomkafe.child('order').push(this.order).key
-      }
+      console.log(this.$store.state.orderKey)
+      this.$store.state.orderKey = this.$firebaseRefs.nomkafe.child('orders').child(this.$store.state.orderKey).update(this.order, (error) => {
+        if (error) {
+          console.error('ERROR: ', error)
+        } else {
+          console.info('Update success')
+        }
+      })
     }
   },
   mounted () {

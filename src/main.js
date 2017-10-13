@@ -18,7 +18,7 @@ new Vue({
   components: { App },
   store,
   firebase: {
-    nomkafe: db.ref('nomkafe')
+    nomkafe: db.child('123456789')
   },
   mounted () {
     this.$firebaseRefs.nomkafe.child('items').on('value', snapshot => {
