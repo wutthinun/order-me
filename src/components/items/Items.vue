@@ -29,12 +29,10 @@ export default {
   methods: {
     addOrder (item, key) {
       this.$store.state.order = {
-        desk: 5,
         name: item.name,
         amount: 1,
         price: item.price,
-        status: 'NEW',
-        time: new Date().toString()
+        status: 'NEW'
       }
 
       this.$store.commit('addOrder', key)

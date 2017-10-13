@@ -79,14 +79,25 @@ export default {
       this.menuIsActive = !this.menuIsActive
     },
     sendOrder () {
-      console.log(this.$store.state.orderKey)
-      this.$store.state.orderKey = this.$firebaseRefs.nomkafe.child('orders').child(this.$store.state.orderKey).update(this.order, (error) => {
-        if (error) {
-          console.error('ERROR: ', error)
-        } else {
-          console.info('Update success')
-        }
-      })
+      const order = {
+        item: this.order,
+        desk: 5,
+        price: this.total,
+        time: new Date().toString()
+      }
+
+      if (this.$store.state.orderKey) {
+        this.$firebaseRefs.nomkafe.child('orders').child(this.$store.state.orderKey).update(order, (error) => {
+          if (error) {
+            console.error('ERROR: ', error)
+          } else {
+            console.info('Update success')
+          }
+        })
+      } else {
+        this.$store.state.orderKey = this.$firebaseRefs.nomkafe.child('orders').push(order).key
+      }
+      this.$router.back()
     }
   },
   mounted () {
