@@ -79,6 +79,7 @@ export default {
       this.isLoading = true
       db.ref('shop_id').child(this.shopId).once('value').then(snapshot => {
         if (snapshot.val()) {
+          localStorage.setItem('shop_id', this.shopId)
           this.$router.push({path: 'menus'})
         } else {
           this.isInvalid = true
