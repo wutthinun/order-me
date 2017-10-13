@@ -21,6 +21,11 @@ export default new Router({
       component: Cooking
     },
     {
+      path: '/menus',
+      name: 'Menus',
+      component: Prototype
+    },
+    {
       path: '/billing',
       name: 'Bill',
       component: Billing
