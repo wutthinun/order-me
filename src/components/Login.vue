@@ -121,7 +121,7 @@ export default {
 }
 
 .hero-banner .hero {
-  background: url('https://unsplash.it/2000/1000');
+  background: url('https://picsum.photos/2000/1000/?random');
   background-position: center;
   background-size: cover;
   background-blend-mode: screen;
