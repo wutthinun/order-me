@@ -1,27 +1,6 @@
 <template>
   <div>
-    <section class="hero is-medium">
-      <div class="hero-body" style=" padding: 1rem;">
-        <div class="container">
-          <div class="columns is-mobile">
-            <div class="column is-2">
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </div>
-            <div class="column">
-              <span style="color: #2544E3;"><strong>ORDER</strong>ME</span>
-            </div>
-            <div class="column is-2" @click="goToCart">
-              <div class="notify-container">
-                <span class="notify-bubble" v-if="getAmount != 0">{{ getAmount }}</span>
-                <span class="icon">
-                  <i class="fa fa-lg fa-shopping-cart fa-flip-horizontal"></i>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <header-bar />
     <hr class="line">
     <menus/>
     <hr class="line">
@@ -36,36 +15,28 @@
 </template>
 
 <script>
+import HeaderBar from '@/components/Header'
 import Menus from '@/components/menus/Menus'
 import Items from '@/components/items/Items'
 export default {
   props: [],
   name: 'prototype',
   components: {
+    'header-bar': HeaderBar,
     'menus': Menus,
     'items': Items
   },
   data () {
     return {
-      msg: 'Prototype',
-      menuIsActive: false,
-      amount: this.$store.getters.amount
+      msg: 'Prototype'
     }
   },
   methods: {
-    toggleMenu () {
-      this.menuIsActive = !this.menuIsActive
-    },
     goToCart () {
       this.$router.push({path: 'cart'})
     }
   },
   mounted () {
-  },
-  computed: {
-    getAmount () {
-      return this.$store.getters.amount
-    }
   }
 }
 </script>
