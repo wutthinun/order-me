@@ -6,6 +6,7 @@ import Billing from '@/components/Bill'
 import Prototype from '@/components/Prototype'
 import Cart from '@/components/cart/Cart'
 import CheckIn from '@/components/checkin/CheckIn'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 
@@ -14,7 +15,7 @@ const myrouter = new Router({
     {
       path: '/',
       name: 'Order',
-      component: Prototype
+      component: Login
     },
     {
       path: '/cooking',
