@@ -1,13 +1,12 @@
 import data from '@/data/data'
 
-const login = (shopId) => {
-  return data.getShopById(shopId).then(shop => {
-    if (shop.val()) {
-      localStorage.setItem('shop_id', shopId)
-      return true
-    }
-    return false
-  })
+const login = async (shopId) => {
+  const shop = await data.getShopById(shopId)
+  if (shop.val()) {
+    localStorage.setItem('shop_id', shopId)
+    return true
+  }
+  return false
 }
 
 export default {

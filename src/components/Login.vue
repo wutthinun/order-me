@@ -75,16 +75,15 @@ export default {
       this.isInvalid = false
       this.isDisabled = !this.shopId
     },
-    doLogin () {
+    async doLogin () {
       this.isLoading = true
-      auth.login(this.shopId).then(success => {
-        if (success) {
-          this.$router.push({path: 'menus'})
-          return
-        }
-        this.isInvalid = true
-        this.isLoading = false
-      })
+      const success = await auth.login(this.shopId)
+      if (success) {
+        this.$router.push({path: 'menus'})
+        return
+      }
+      this.isInvalid = true
+      this.isLoading = false
     }
   }
 }
