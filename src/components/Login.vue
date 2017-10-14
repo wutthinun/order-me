@@ -32,7 +32,7 @@
                 <div class="login-form">
                   <div class="field">
                     <div class="control has-icons-left has-icons-right">
-                      <input v-model="shopId" @keyup="onChangeShopId" :class="['input', 'shop-id-input',  {'is-danger': isInvalid}]" type="text" placeholder="รหัสร้าน">
+                      <input v-model="shopId" @keyup="onChangeShopId" @keyup.enter="doLogin" :class="['input', 'shop-id-input',  {'is-danger': isInvalid}]" type="text" placeholder="รหัสร้าน">
                       <span class="icon user">
                         <i class="fa fa-user"></i>
                       </span>
