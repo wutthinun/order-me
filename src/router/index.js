@@ -51,10 +51,10 @@ const myrouter = new Router({
 
 myrouter.beforeEach((to, from, next) => {
   if (to.name === 'CheckIn' && to.query.desk && to.query.shop_id) {
-    sessionStorage.setItem('desk', to.query.desk)
-    sessionStorage.setItem('shop_id', to.query.shop_id)
+    localStorage.setItem('desk', to.query.desk)
+    localStorage.setItem('shop_id', to.query.shop_id)
     next({name: 'Order'})
-  } else if (to.name === 'Order' && !sessionStorage.getItem('desk') && !sessionStorage.getItem('shop_id')) {
+  } else if (to.name === 'Order' && !localStorage.getItem('desk') && !localStorage.getItem('shop_id')) {
     next({name: 'CheckIn'})
   } else {
     next()
