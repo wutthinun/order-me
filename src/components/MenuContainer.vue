@@ -2,8 +2,6 @@
   <div>
     <header-bar />
     <hr class="line">
-    <menus/>
-    <hr class="line">
     <items />
     <button class="button is-info is-outlined is-large order-button" @click="goToCart">
       <span class="icon is-small order-icon">
