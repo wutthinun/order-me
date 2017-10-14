@@ -3,7 +3,7 @@ import Router from 'vue-router'
 // import Index from '@/components/Index'
 import Cooking from '@/components/Cooking'
 import Billing from '@/components/Bill'
-import Prototype from '@/components/Prototype'
+import MenuContainer from '@/components/MenuContainer'
 import Cart from '@/components/cart/Cart'
 import CheckIn from '@/components/checkin/CheckIn'
 import Login from '@/components/Login'
@@ -14,8 +14,8 @@ const myrouter = new Router({
   routes: [
     {
       path: '/',
-      name: 'Order',
-      component: Prototype
+      name: 'menus',
+      component: MenuContainer
     },
     {
       path: '/cooking',
@@ -28,19 +28,9 @@ const myrouter = new Router({
       component: Login
     },
     {
-      path: '/menus',
-      name: 'Menus',
-      component: Prototype
-    },
-    {
       path: '/billing',
       name: 'Bill',
       component: Billing
-    },
-    {
-      path: '/prototype',
-      name: 'Prototype',
-      component: Prototype
     },
     {
       path: '/cart',
