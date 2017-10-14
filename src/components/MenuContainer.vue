@@ -18,16 +18,14 @@ import Menus from '@/components/menus/Menus'
 import Items from '@/components/items/Items'
 export default {
   props: [],
-  name: 'prototype',
+  name: 'menu-container',
   components: {
     'header-bar': HeaderBar,
     'menus': Menus,
     'items': Items
   },
   data () {
-    return {
-      msg: 'Prototype'
-    }
+    return {}
   },
   methods: {
     goToCart () {
