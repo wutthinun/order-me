@@ -87,9 +87,7 @@ export default {
 }
 </script>
 
-<style>
-
-
+<style scoped>
 .shop-id-input,
 .password-input {
   border-radius: 40px;
