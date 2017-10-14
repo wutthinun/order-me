@@ -53,7 +53,7 @@
         ยืนยัน
       </button>
     </div>
-    <div class="modal is-active">
+    <div :class="['modal', {'is-active': isSuccess}]">
       <div class="modal-background"></div>
       <div class="modal-content">
         <div class="container icon is-9x">
@@ -63,7 +63,6 @@
         </div>
         <p class="p-send-order">ส่งรายการอาหารแล้ว</p>
       </div>
-      <button class="modal-close is-large" aria-label="close"></button>
     </div>
   </div>
 </template>
@@ -80,6 +79,7 @@ export default {
   components: {},
   data () {
     return {
+      isSuccess: false,
       menuIsActive: false,
       order: this.$store.state.orderList,
       total: this.$store.state.total,
@@ -104,13 +104,17 @@ export default {
           if (error) {
             console.error('ERROR: ', error)
           } else {
+            this.isSuccess = true
             console.info('Update success')
           }
         })
       } else {
         this.$store.state.orderKey = this.$firebaseRefs.nomkafe.child('orders').push(order).key
+        this.isSuccess = true
       }
-      this.$router.back()
+      setTimeout(() => {
+        this.$router.back()
+      }, 1500)
     }
   },
   mounted () {
