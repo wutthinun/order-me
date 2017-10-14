@@ -21,7 +21,6 @@ new Vue({
     nomkafe: db.child(localStorage.getItem('shop_id') || '123456789')
   },
   mounted () {
-    console.log(this.$firebaseRefs.nomkafe)
     this.$firebaseRefs.nomkafe.child('items').on('value', snapshot => {
       this.items = snapshot.val()
       const metrix = 3
