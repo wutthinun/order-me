@@ -40,7 +40,7 @@
                     <p v-if="isInvalid" class="help is-danger">ไม่พบรหัสร้านนี้</p>
                   </div>
                   <p class="control login">
-                    <button @click="doLogin" :class="['button is-success is-large is-fullwidth', {'is-loading': isLoading}]" :disabled="isDisabled">Login</button>
+                    <button @click="doLogin" :class="['button is-success is-large is-fullwidth', {'is-loading': isLoading}]" :disabled="shopId === ''">Login</button>
                   </p>
                 </div>
                 <div class="section forgot-password">
@@ -66,14 +66,12 @@ export default {
     return {
       shopId: '',
       isInvalid: false,
-      isDisabled: true,
       isLoading: false
     }
   },
   methods: {
     onChangeShopId () {
       this.isInvalid = false
-      this.isDisabled = !this.shopId
     },
     async doLogin () {
       this.isLoading = true
