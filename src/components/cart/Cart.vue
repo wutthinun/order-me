@@ -84,7 +84,7 @@ export default {
       order: this.$store.state.orderList,
       total: this.$store.state.total,
       amount: this.$store.state.amount,
-      desk: sessionStorage.getItem('desk')
+      desk: localStorage.getItem('desk')
     }
   },
   methods: {
