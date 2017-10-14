@@ -18,7 +18,7 @@ new Vue({
   components: { App },
   store,
   firebase: {
-    nomkafe: db.child(sessionStorage.getItem('shopid') || '123456789')
+    nomkafe: db.child(sessionStorage.getItem('shop_id') || '123456789')
   },
   mounted () {
     console.log(this.$firebaseRefs.nomkafe)
