@@ -53,6 +53,18 @@
         ยืนยัน
       </button>
     </div>
+    <div class="modal is-active">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="container icon is-9x">
+          <span class="icon has-text-success">
+            <i class="fa fa-9x fa-check-circle" aria-hidden="true"></i>
+          </span>
+        </div>
+        <p class="p-send-order">ส่งรายการอาหารแล้ว</p>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
   </div>
 </template>
 
@@ -107,6 +119,16 @@ export default {
 </script>
 
 <style>
+.p-send-order {
+  color: white;
+  font-size: 2em;
+}
+.is-9x {
+  height: 9rem;
+}
+.fa-9x {
+  font-size: 9em;
+}
 strong {
     font-weight: 900;
 }
