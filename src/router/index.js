@@ -7,6 +7,7 @@ import MenuContainer from '@/components/MenuContainer'
 import Cart from '@/components/cart/Cart'
 import CheckIn from '@/components/checkin/CheckIn'
 import Login from '@/components/Login'
+import AdminContainer from '@/components/AdminContainer'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ const myrouter = new Router({
       path: '/checkin',
       name: 'CheckIn',
       component: CheckIn
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: AdminContainer
     }
   ]
 })
