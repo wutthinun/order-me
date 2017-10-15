@@ -6,6 +6,7 @@ import router from './router'
 import VueFire from 'vuefire'
 import db from './firebase.conf'
 import store from './stores'
+import _ from 'lodash'
 
 Vue.config.productionTip = false
 Vue.use(VueFire)
@@ -23,23 +24,7 @@ new Vue({
   mounted () {
     this.$firebaseRefs.nomkafe.child('items').on('value', snapshot => {
       this.items = snapshot.val()
-      const metrix = 3
-      let counter = 1
-      let obj = {}
-      for (let key in this.items) {
-        if (counter <= metrix) {
-          obj[key] = this.items[key]
-          counter++
-        } else {
-          this.$store.state.items.push(obj)
-          obj = {}
-
-          counter = 1
-          obj[key] = this.items[key]
-          counter++
-        }
-      }
-      this.$store.state.items.push(obj)
+      this.$store.state.items = _.values(this.items)
     })
   }
 })
