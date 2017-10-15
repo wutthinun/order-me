@@ -2,7 +2,7 @@
   <div class="container is-fluid">
     <div class="columns is-gapless is-mobile" v-for="(item, index) in items" :key="index">
       <div class="column is-4" v-for="(value, key) in item" :key="key" @click="addOrder(value, key)">
-        <div class="notify-container">
+        <div class="notify-container cursor-hand">
           <span class="notify-bubble" v-if="order[key]">{{ order[key].amount }}</span>
           <img class="is-96x96" src="../../assets/images-menu/2.jpg"/>
           <div class="text-background"></div>
@@ -44,6 +44,9 @@ export default {
 </script>
 
 <style>
+.cursor-hand {
+  cursor: pointer;
+}
 .text {
   left: 0;
   position: absolute;
