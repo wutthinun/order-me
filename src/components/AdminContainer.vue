@@ -20,10 +20,10 @@
       </div>
       <div class="content">
         <div id="tab-cooking-content" :class="[{'is-hidden': tabActive != 'cooking'}]">
-          <p>Raw denim you probably haven't ui.</p>
+          <cooking />
         </div>
         <div id="tab-billing-content" :class="[{'is-hidden': tabActive != 'billing'}]">
-          <p>Food truck park.</p>
+          <billing />
         </div>
       </div>
     </section>
@@ -32,11 +32,15 @@
 
 <script>
 import Headers from '@/components/Header'
+import Cooking from '@/components/Cooking'
+import Billing from '@/components/Bill'
 export default {
   props: [],
   name: 'admin-container',
   components: {
-    'headers': Headers
+    'headers': Headers,
+    'cooking': Cooking,
+    'billing': Billing
   },
   data () {
     return {
