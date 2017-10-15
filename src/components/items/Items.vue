@@ -1,13 +1,13 @@
 <template>
   <div class="container is-fluid">
-    <div class="columns is-gapless is-mobile" v-for="(item, index) in items" :key="index">
-      <div class="column is-4" v-for="(value, key) in item" :key="key" @click="addOrder(value, key)">
+    <div class="columns is-gapless is-mobile" >
+      <div class="column is-4" v-for="item in items" :key="item.key" @click="addToCart(item)">
         <div class="notify-container cursor-hand">
           <span class="notify-bubble" v-if="order[key]">{{ order[key].amount }}</span>
           <img class="is-96x96" src="../../assets/images-menu/2.jpg"/>
           <div class="text-background"></div>
           <div class="text">
-            {{ value.name }}
+            {{ item.name }}
           </div>
         </div>
       </div>
@@ -16,29 +16,35 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   props: [],
   name: 'items',
   components: {},
   data () {
     return {
-      items: this.$store.state.items,
       order: this.$store.state.orderList
     }
   },
-  methods: {
-    addOrder (item, key) {
-      this.$store.state.order = {
-        name: item.name,
-        amount: 1,
-        price: item.price,
-        status: 'NEW'
-      }
+  computed: mapGetters({
+    items: 'items'
+  }),
+  methods: mapActions([
+    'addToCart'
+  ]),
+  // methods: {
+  //   addOrder (item, key) {
+  //     this.$store.state.order = {
+  //       name: item.name,
+  //       amount: 1,
+  //       price: item.price,
+  //       status: 'NEW'
+  //     }
 
-      this.$store.commit('addOrder', key)
-    }
-  },
-  mounted () {
+  //     this.$store.commit('addOrder', key)
+  //   }
+  // },
+  created () {
   }
 }
 </script>

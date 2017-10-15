@@ -1,19 +1,31 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
+import * as actions from './actions'
+import * as types from './mutation-types'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
-    orderList: {},
-    order: {},
-    item: {},
-    items: [],
-    total: 0,
-    amount: 0,
-    orderKey: ''
+const state = {
+  cart: {
+    orders: []
   },
+  orderList: {},
+  order: {},
+  item: {},
+  items: [],
+  total: 0,
+  amount: 0,
+  orderKey: ''
+}
+
+export default new Vuex.Store({
+  actions,
+  state,
   mutations: {
+    [types.ADD_TO_CART] (state, { item }) {
+      item.status = 'SELECT'
+      state.cart.orders.push(item)
+    },
     addOrder (state, key) {
       if (state.orderList[key]) {
         state.orderList[key].amount += 1
@@ -27,6 +39,7 @@ export default new Vuex.Store({
   getters: {
     amount (state) {
       return state.amount
-    }
+    },
+    items: state => state.items
   }
 })
