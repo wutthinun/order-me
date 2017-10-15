@@ -1,7 +1,7 @@
 <template>
   <div>
       <p>Check in</p>
-      <p>Hello travis v2</p>
+      <p>Please scan Barcode or QRCode</p>
   </div>
 </template>
 
