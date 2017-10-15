@@ -2,14 +2,30 @@
    <div>
     <headers />
     <section>
-      <nav class="navbar has-shadow">
-        <div class="container" style="justify-content: center;">
-          <div class="navbar-tabs">
-            <router-link to="/cooking" :class="[ 'navbar-item', 'is-tab', {'is-active': false } ]">Cook</router-link>
-            <router-link to="/billing" :class="[ 'navbar-item', 'is-tab', {'is-active': false } ]">Bill</router-link>
-          </div>
+      <div class="tabs is-centered is-boxed">
+        <ul>
+          <li @click="toggleTabs('cooking')" :class="[{'is-active': tabActive === 'cooking'}]">
+            <a>
+              <span class="icon is-small"><i class="fa fa-file-text-o"></i></span>
+              <span>รายการที่สั่ง</span>
+            </a>
+          </li>
+          <li @click="toggleTabs('billing')" :class="[{'is-active': tabActive === 'billing'}]">
+            <a>
+              <span class="icon is-small"><i class="fa fa-calculator"></i></span>
+              <span>คิดเงิน</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <div id="tab-cooking-content" :class="[{'is-hidden': tabActive != 'cooking'}]">
+          <p>Raw denim you probably haven't ui.</p>
         </div>
-      </nav>
+        <div id="tab-billing-content" :class="[{'is-hidden': tabActive != 'billing'}]">
+          <p>Food truck park.</p>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -24,10 +40,14 @@ export default {
   },
   data () {
     return {
-      msg: 'Admin Container'
+      tabActive: 'cooking'
     }
   },
-  methods: {},
+  methods: {
+    toggleTabs (name) {
+      this.tabActive = name
+    }
+  },
   mounted () {
   }
 }
