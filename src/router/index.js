@@ -15,7 +15,7 @@ const myrouter = new Router({
   routes: [
     {
       path: '/',
-      name: 'menus',
+      name: 'Menu',
       component: MenuContainer
     },
     {
@@ -55,7 +55,7 @@ myrouter.beforeEach((to, from, next) => {
   if (to.name === 'CheckIn' && to.query.desk && to.query.shop_id) {
     localStorage.setItem('desk', to.query.desk)
     localStorage.setItem('shop_id', to.query.shop_id)
-    next({name: 'Order'})
+    next({name: 'Menu'})
   } else if (to.name === 'Order' && !localStorage.getItem('desk') && !localStorage.getItem('shop_id')) {
     next({name: 'CheckIn'})
   } else {
