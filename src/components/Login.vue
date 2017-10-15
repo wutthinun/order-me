@@ -77,7 +77,7 @@ export default {
       this.isLoading = true
       const success = await auth.login(this.shopId)
       if (success) {
-        this.$router.push({path: 'menus'})
+        this.$router.push({path: 'admin'})
         return
       }
       this.isInvalid = true
