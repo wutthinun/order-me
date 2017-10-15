@@ -7,7 +7,7 @@
               <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
             </div>
             <div class="column">
-              <span style="color: #2544E3;"><strong>ORDER</strong>ME</span>
+              <logo />
             </div>
             <div class="column is-2" @click="goToCart">
               <div class="notify-container">
@@ -24,8 +24,12 @@
 </template>
 
 <script>
+import Logo from '@/components/Logo'
 export default {
   name: 'header-bar',
+  components: {
+    'logo': Logo
+  },
   data () {
     return {
       menuIsActive: false,

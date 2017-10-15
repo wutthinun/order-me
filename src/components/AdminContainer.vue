@@ -1,6 +1,12 @@
 <template>
    <div>
-    <headers />
+    <section class="hero is-medium">
+      <div class="hero-body" style=" padding: 1rem;">
+        <div class="container">
+          <logo />
+        </div>
+      </div>
+    </section>
     <section>
       <div class="tabs is-centered is-boxed">
         <ul>
@@ -31,14 +37,14 @@
 </template>
 
 <script>
-import Headers from '@/components/Header'
+import Logo from '@/components/Logo'
 import Cooking from '@/components/Cooking'
 import Billing from '@/components/Bill'
 export default {
   props: [],
   name: 'admin-container',
   components: {
-    'headers': Headers,
+    'logo': Logo,
     'cooking': Cooking,
     'billing': Billing
   },
