@@ -40,6 +40,7 @@ export default new Vuex.Store({
     amount (state) {
       return state.amount
     },
-    items: state => state.items
+    items: state => state.items,
+    orders: state => state.cart.orders
   }
 })

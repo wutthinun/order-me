@@ -13,7 +13,7 @@
     <hr class="line">
     <strong>ทั้งหมด {{ amount }} รายการ</strong>
     <hr class="line">
-    <div class="container is-fluid" style="margin-bottom: 2px" v-for="(item, index) in order" :key="index">
+    <div class="container is-fluid" style="margin-bottom: 2px" v-for="(item, index) in orders" :key="index">
       <article class="media">
         <figure class="media-left">
           <p class="image is-64x64">
@@ -69,6 +69,7 @@
 
 <script>
 import db from '../../firebase.conf'
+import { mapGetters } from 'vuex'
 
 export default {
   props: [],
@@ -77,6 +78,9 @@ export default {
     nomkafe: db.child('123456789')
   },
   components: {},
+  computed: mapGetters({
+    orders: 'orders'
+  }),
   data () {
     return {
       isSuccess: false,
