@@ -44,7 +44,7 @@
     <div class="columns total">
       <hr class="line">
       <div class="column is-offset-8">
-        <strong>รวมเป็นเงิน {{ total }} ฿</strong>
+        <strong>รวมเป็นเงิน {{ totalPrice }} ฿</strong>
       </div>
       <button class="button is-success is-outlined is-large order-button" :disabled="total == 0" @click="sendOrder">
         <span class="icon is-small order-icon">
@@ -79,7 +79,8 @@ export default {
   },
   components: {},
   computed: mapGetters({
-    orders: 'orders'
+    orders: 'orders',
+    totalPrice: 'totalPrice'
   }),
   data () {
     return {

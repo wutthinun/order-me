@@ -48,6 +48,13 @@ export default new Vuex.Store({
       return state.amount
     },
     items: state => state.items,
-    orders: state => state.cart.orders
+    orders: state => state.cart.orders,
+    totalPrice: state => {
+      let price = 0
+      state.cart.orders.forEach((o) => {
+        price += (o.amount * o.price)
+      })
+      return price
+    }
   }
 })
