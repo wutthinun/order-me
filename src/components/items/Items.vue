@@ -1,7 +1,7 @@
 <template>
   <div class="container is-fluid">
     <div class="columns is-gapless is-mobile" >
-      <div class="column is-4" v-for="item in items" :key="item.key" @click="addToCart(item)">
+      <div class="column is-4" v-for="item in items" :key="item.id" @click="addToCart(item)">
         <div class="notify-container cursor-hand">
           <span class="notify-bubble" v-if="order[key]">{{ order[key].amount }}</span>
           <img class="is-96x96" src="../../assets/images-menu/2.jpg"/>
