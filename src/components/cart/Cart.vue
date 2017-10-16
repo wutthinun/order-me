@@ -46,7 +46,7 @@
       <div class="column is-offset-8">
         <strong>รวมเป็นเงิน {{ totalPrice }} ฿</strong>
       </div>
-      <button class="button is-success is-outlined is-large order-button" :disabled="total == 0" @click="sendOrder">
+      <button class="button is-success is-outlined is-large order-button" :disabled="totalPrice == 0" @click="sendOrder">
         <span class="icon is-small order-icon">
           <i class="fa fa-lg fa-shopping-cart"></i>
         </span>
