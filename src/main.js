@@ -24,7 +24,10 @@ new Vue({
   mounted () {
     this.$firebaseRefs.nomkafe.child('items').on('value', snapshot => {
       this.items = snapshot.val()
-      this.$store.state.items = _.values(this.items)
+      this.$store.state.items = _.map(this.items, (item, key) => {
+        item.id = key
+        return item
+      })
     })
   }
 })
