@@ -15,3 +15,4 @@ export const getOrdered = ({ commit }, orderKey) => {
     commit(types.GET_ORDERED, ordered)
   })
 }
+export const getAllItems = ({ commit }, db) => commit(types.GET_ALL_ITEMS, db)

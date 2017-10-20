@@ -40,6 +40,14 @@ export default new Vuex.Store({
     [types.GET_ORDERED] (state, ordered) {
       state.cart.ordered = ordered
     },
+    [types.GET_ALL_ITEMS] (state, db) {
+      db.child('items').on('value', snapshot => {
+        state.items = _.map(snapshot.val(), (item, key) => {
+          item.id = key
+          return item
+        })
+      })
+    },
     addOrder (state, key) {
       if (state.orderList[key]) {
         state.orderList[key].amount += 1

@@ -6,7 +6,7 @@ import router from './router'
 import VueFire from 'vuefire'
 import db from './firebase.conf'
 import store from './stores'
-import _ from 'lodash'
+import { mapActions } from 'vuex'
 
 Vue.config.productionTip = false
 Vue.use(VueFire)
@@ -19,16 +19,13 @@ new Vue({
   components: { App },
   store,
   firebase: {
-    nomkafe: db.child(localStorage.getItem('shop_id') || '123456789')
+    ordermeRef: db.child(localStorage.getItem('shop_id') || '123456789')
   },
+  methods: mapActions([
+    'getAllItems'
+  ]),
   mounted () {
-    this.$firebaseRefs.nomkafe.child('items').on('value', snapshot => {
-      this.items = snapshot.val()
-      this.$store.state.items = _.map(this.items, (item, key) => {
-        item.id = key
-        return item
-      })
-    })
+    this.getAllItems(this.$firebaseRefs.ordermeRef)
   }
 })
 
