@@ -2,6 +2,7 @@ import Vuex from 'vuex'
 import Vue from 'vue'
 import * as actions from './actions'
 import * as types from './mutation-types'
+import * as getters from './getters'
 import _ from 'lodash'
 
 Vue.use(Vuex)
@@ -58,18 +59,5 @@ export default new Vuex.Store({
       state.amount += 1
     }
   },
-  getters: {
-    amount (state) {
-      return state.amount
-    },
-    items: state => state.items,
-    orders: state => state.cart.orders,
-    totalPrice: state => {
-      let price = 0
-      state.cart.orders.forEach((o) => {
-        price += (o.amount * o.price)
-      })
-      return price
-    }
-  }
+  getters
 })
