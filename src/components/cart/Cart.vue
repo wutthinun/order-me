@@ -110,12 +110,14 @@ export default {
             this.isSuccess = true
             console.info('Update success')
             this.$store.dispatch('clearSelectCart')
+            this.$store.dispatch('getOrdered', this.$store.state.orderKey)
           }
         })
       } else {
         this.$store.state.orderKey = db.child(localStorage.getItem('shop_id')).child('orders').push(order).key
         this.isSuccess = true
         this.$store.dispatch('clearSelectCart')
+        this.$store.dispatch('getOrdered', this.$store.state.orderKey)
       }
       setTimeout(() => {
         this.$router.back()

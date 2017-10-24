@@ -8,7 +8,8 @@ Vue.use(Vuex)
 
 const state = {
   cart: {
-    orders: []
+    orders: [],
+    ordered: []
   },
   orderList: {},
   order: {},
@@ -35,6 +36,9 @@ export default new Vuex.Store({
     },
     [types.CLEAR_SELECT_CART] (state) {
       state.cart.orders.splice(0)
+    },
+    [types.GET_ORDERED] (state, ordered) {
+      state.cart.ordered = ordered
     },
     addOrder (state, key) {
       if (state.orderList[key]) {
