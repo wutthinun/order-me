@@ -18,7 +18,7 @@ const state = {
   amount: 0,
   orderKey: ''
 }
-
+// STATUS = SELECT | NEW | FINISHED
 export default new Vuex.Store({
   actions,
   state,
@@ -32,6 +32,9 @@ export default new Vuex.Store({
         item.amount = 1
         state.cart.orders.push(item)
       }
+    },
+    [types.CLEAR_SELECT_CART] (state) {
+      state.cart.orders.splice(0)
     },
     addOrder (state, key) {
       if (state.orderList[key]) {

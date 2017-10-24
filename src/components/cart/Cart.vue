@@ -74,9 +74,6 @@ import { mapGetters } from 'vuex'
 export default {
   props: [],
   name: 'cart',
-  firebase: {
-    nomkafe: db.child('123456789')
-  },
   components: {},
   computed: mapGetters({
     orders: 'orders',
@@ -86,8 +83,6 @@ export default {
     return {
       isSuccess: false,
       menuIsActive: false,
-      order: this.$store.state.orderList,
-      total: this.$store.state.total,
       amount: this.$store.state.amount,
       desk: localStorage.getItem('desk')
     }
@@ -98,24 +93,29 @@ export default {
     },
     sendOrder () {
       const order = {
-        item: this.order,
+        item: this.orders.map(item => {
+          item.status = 'NEW'
+          return item
+        }),
         desk: this.desk,
-        price: this.total,
+        price: this.totalPrice,
         time: new Date().toString()
       }
 
       if (this.$store.state.orderKey) {
-        this.$firebaseRefs.nomkafe.child('orders').child(this.$store.state.orderKey).update(order, (error) => {
+        db.child(localStorage.getItem('shop_id')).child('orders').child(this.$store.state.orderKey).update(order, (error) => {
           if (error) {
             console.error('ERROR: ', error)
           } else {
             this.isSuccess = true
             console.info('Update success')
+            this.$store.dispatch('clearSelectCart')
           }
         })
       } else {
-        this.$store.state.orderKey = this.$firebaseRefs.nomkafe.child('orders').push(order).key
+        this.$store.state.orderKey = db.child(localStorage.getItem('shop_id')).child('orders').push(order).key
         this.isSuccess = true
+        this.$store.dispatch('clearSelectCart')
       }
       setTimeout(() => {
         this.$router.back()
