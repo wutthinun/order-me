@@ -93,7 +93,7 @@ export default {
     },
     sendOrder () {
       const order = {
-        item: this.orders.map(item => {
+        items: this.orders.map(item => {
           item.status = 'NEW'
           return item
         }),

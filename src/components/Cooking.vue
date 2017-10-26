@@ -29,7 +29,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, key2) in order.item" :key="key2">
+            <tr v-for="(item, key2) in order.items" :key="key2">
               <td>{{ item.name }}</td>
               <td>{{ item.amount }}</td>
               <!-- <td><button class="button is-small is-info" @click="increment(order)">done</button></td> -->
