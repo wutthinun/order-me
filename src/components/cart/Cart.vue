@@ -100,10 +100,8 @@ export default {
         desk: this.desk,
         price: this.totalPrice,
         time: new Date().toString(),
-        status: 'NEW'
+        status: 'UNPAID'
       }
-
-      console.log('====> ', order)
 
       if (this.$store.state.orderKey) {
         db.child(localStorage.getItem('shop_id')).child('orders').child(this.$store.state.orderKey).update(order, (error) => {

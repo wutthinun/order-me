@@ -16,9 +16,13 @@
 import HeaderBar from '@/components/Header'
 import Menus from '@/components/menus/Menus'
 import Items from '@/components/items/Items'
+import db from '@/firebase.conf'
 export default {
   props: [],
   name: 'menu-container',
+  firebase: {
+    ordermeRef: db.child('orders')
+  },
   components: {
     'header-bar': HeaderBar,
     'menus': Menus,
@@ -33,6 +37,7 @@ export default {
     }
   },
   mounted () {
+    this.$store.dispatch('initOrder')
   }
 }
 </script>

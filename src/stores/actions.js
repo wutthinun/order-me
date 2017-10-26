@@ -23,3 +23,5 @@ export const getOrdered = ({ commit }, orderKey) => {
 export const getAllItems = ({ commit }, db) => commit(types.GET_ALL_ITEMS, db)
 
 export const purchase = ({commit}, { db, orderKey }) => commit(types.PURCHASE, { db, orderKey })
+
+export const initOrder = ({commit}) => service.initOrder()

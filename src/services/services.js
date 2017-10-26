@@ -7,7 +7,10 @@ const getOrdered = async (orderKey) => {
 
 const getWholeOrders = async () => await data.getWholeOrders()
 
+const initOrder = async () => await data.initOrder()
+
 export default {
   getOrdered,
-  getWholeOrders
+  getWholeOrders,
+  initOrder
 }

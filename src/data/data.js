@@ -12,8 +12,15 @@ const getWholeOrders = async () => {
   return wholeOrders
 }
 
+const initOrder = async () => await db.child(localStorage.getItem('shop_id')).child('orders').push({
+  desk: localStorage.getItem('desk'),
+  time: new Date().toString(),
+  status: 'UNPAID'
+})
+
 export default {
   getShopById,
   getOrdered,
-  getWholeOrders
+  getWholeOrders,
+  initOrder
 }

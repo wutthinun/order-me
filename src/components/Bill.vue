@@ -38,7 +38,7 @@ export default {
     }
   },
   beforeMount () {
-    this.$firebaseRefs.nomkafe.child('orders').orderByChild('status').equalTo('NEW').on('value', snapshot => {
+    this.$firebaseRefs.nomkafe.child('orders').orderByChild('status').equalTo('UNPAID').on('value', snapshot => {
       this.orders = snapshot.val()
     })
   }
