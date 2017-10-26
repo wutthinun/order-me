@@ -12,6 +12,9 @@ export default {
       item.amount = 1
       state.cart.orders.push(item)
     }
+
+    let tempCart = state.cart.orders.slice()
+    state.cart.orders = tempCart.slice()
   },
 
   [types.CLEAR_SELECT_CART] (state) {

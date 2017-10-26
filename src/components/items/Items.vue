@@ -3,7 +3,7 @@
     <div class="columns is-gapless is-mobile" >
       <div class="column is-4" v-for="item in items" :key="item.id" @click="addToCart(item)">
         <div class="notify-container cursor-hand">
-          <span class="notify-bubble"></span>
+          <span class="notify-bubble">0</span>
           <img class="is-96x96" src="../../assets/images-menu/2.jpg"/>
           <div class="text-background"></div>
           <div class="text">
@@ -21,29 +21,12 @@ export default {
   props: [],
   name: 'items',
   components: {},
-  // data () {
-  //   return {
-  //     order: this.$store.state.orderList
-  //   }
-  // },
   computed: mapGetters({
     items: 'items'
   }),
   methods: mapActions([
     'addToCart'
   ]),
-  // methods: {
-  //   addOrder (item, key) {
-  //     this.$store.state.order = {
-  //       name: item.name,
-  //       amount: 1,
-  //       price: item.price,
-  //       status: 'NEW'
-  //     }
-
-  //     this.$store.commit('addOrder', key)
-  //   }
-  // },
   created () {
   }
 }
