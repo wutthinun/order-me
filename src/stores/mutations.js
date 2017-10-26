@@ -20,7 +20,7 @@ export default {
   [types.CLEAR_SELECT_CART] (state) {
     state.cart.orders.splice(0)
   },
-  
+
   [types.GET_ORDERED] (state, ordered) {
     state.cart.ordered = ordered
   },
