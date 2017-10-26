@@ -5,6 +5,9 @@ const getOrdered = async (orderKey) => {
   return ordered.val()
 }
 
+const getWholeOrders = async () => await data.getWholeOrders()
+
 export default {
-  getOrdered
+  getOrdered,
+  getWholeOrders
 }

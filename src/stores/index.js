@@ -11,7 +11,9 @@ const state = {
     orders: [],
     ordered: []
   },
-  orderList: {},
+  cook: {
+    wholeOrders: []
+  },
   order: {},
   item: {},
   items: [],

@@ -16,7 +16,7 @@
               <span>รายการที่สั่ง</span>
             </a>
           </li>
-          <li @click="toggleTabs('billing')" :class="[{'is-active': tabActive === 'billing'}]">
+          <li @click="toggleTabs('billing'); getWholeOrders();" :class="[{'is-active': tabActive === 'billing'}]">
             <a>
               <span class="icon is-small"><i class="fa fa-calculator"></i></span>
               <span>คิดเงิน</span>
@@ -40,6 +40,7 @@
 import Logo from '@/components/Logo'
 import Cooking from '@/components/Cooking'
 import Billing from '@/components/Bill'
+import { mapActions } from 'vuex'
 export default {
   props: [],
   name: 'admin-container',
@@ -54,6 +55,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'getWholeOrders'
+    ]),
     toggleTabs (name) {
       this.tabActive = name
     }

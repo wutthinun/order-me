@@ -11,7 +11,7 @@
       </div>
     </section>
     <section>
-      <div class="box" v-for="(items, key1) in orders" :key="key1">
+      <div class="box" v-for="(items, key1) in ordered" :key="key1">
         <div class="columns">
           <div class="column is-12">
             <label class="">Desk: {{ items.desk }}</label>
@@ -46,10 +46,14 @@
 </template>
 <script>
 import db from '../firebase.conf'
+import { mapGetters } from 'vuex'
 export default {
   firebase: {
     nomkafe: db.child('123456789')
   },
+  computed: mapGetters({
+    ordered: 'ordered'
+  }),
   data () {
     return {
       orders: {}
