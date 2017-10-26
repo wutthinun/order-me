@@ -11,10 +11,10 @@
       </div>
     </section>
     <section>
-      <div class="box" v-for="(items, key1) in ordered" :key="key1">
+      <div class="box" v-for="(order, key) in wholeOrders" :key="key">
         <div class="columns">
           <div class="column is-12">
-            <label class="">Desk: {{ items.desk }}</label>
+            <label class="">Desk: {{ order.desk }}</label>
           </div>
           <div class="column is-hidden-mobile"></div>
           <div class="column is-hidden-mobile"></div>
@@ -29,7 +29,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, key2) in items.order" :key="key2">
+            <tr v-for="(item, key2) in order.item" :key="key2">
               <td>{{ item.name }}</td>
               <td>{{ item.amount }}</td>
               <!-- <td><button class="button is-small is-info" @click="increment(order)">done</button></td> -->
@@ -52,7 +52,7 @@ export default {
     nomkafe: db.child('123456789')
   },
   computed: mapGetters({
-    ordered: 'ordered'
+    wholeOrders: 'wholeOrders'
   }),
   data () {
     return {
