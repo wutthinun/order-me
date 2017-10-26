@@ -11,7 +11,7 @@
       </div>
     </section>
     <section>
-      <div class="box" v-for="(order, key) in wholeOrders" :key="key">
+      <div class="box" v-for="(order, orderKey) in wholeOrders" :key="orderKey">
         <div class="columns">
           <div class="column is-12">
             <label class="">Desk: {{ order.desk }}</label>
@@ -37,7 +37,7 @@
           </tbody>
         </table>
         <div class="column">
-          <button class="button is-success is-fullwidth" @click="done(key1)">Done</button>
+          <button class="button is-success is-fullwidth" @click="done(orderKey)">Done</button>
         </div>
       </div>
     </section>
