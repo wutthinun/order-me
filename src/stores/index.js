@@ -21,7 +21,7 @@ const state = {
   amount: 0,
   orderKey: ''
 }
-// STATUS = SELECT | NEW | FINISHED
+// STATUS = SELECT | NEW | FINISHED | PURCHASED
 export default new Vuex.Store({
   actions,
   state,

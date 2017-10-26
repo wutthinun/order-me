@@ -6,7 +6,7 @@
       </div>
 
       <div class="column">
-        <bill-detail :selected="selected" :orderKey="orderKey" @purchase="purchase"></bill-detail>
+        <bill-detail :selected="selected" :orderKey="orderKey"></bill-detail>
       </div>
     </div>
   </div>
@@ -32,18 +32,13 @@ export default {
     }
   },
   methods: {
-    purchase () {
-      this.$firebaseRefs.nomkafe.child('order').child(this.orderKey).update({ status: 'PURCHASE' })
-      this.selected = {}
-      this.orderKey = ''
-    },
     orderSelect ({ selected, orderKey }) {
       this.selected = selected
       this.orderKey = orderKey
     }
   },
   beforeMount () {
-    this.$firebaseRefs.nomkafe.child('order').orderByChild('status').equalTo('DONE').on('value', snapshot => {
+    this.$firebaseRefs.nomkafe.child('orders').orderByChild('status').equalTo('NEW').on('value', snapshot => {
       this.orders = snapshot.val()
     })
   }

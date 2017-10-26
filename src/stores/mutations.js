@@ -38,6 +38,10 @@ export default {
     })
   },
 
+  [types.PURCHASE] (state, { db, orderKey }) {
+    db.child('orders').child(orderKey).update({ status: 'PURCHASED' })
+  },
+
   addOrder (state, key) {
     if (state.orderList[key]) {
       state.orderList[key].amount += 1
