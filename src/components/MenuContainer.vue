@@ -36,8 +36,9 @@ export default {
       this.$router.push({path: 'cart'})
     }
   },
-  mounted () {
-    this.$store.dispatch('initOrder')
+  created () {
+    // console.log('INIT ORDER')
+    // this.$store.dispatch('initOrder')
   }
 }
 </script>

@@ -19,7 +19,7 @@ const state = {
   items: [],
   total: 0,
   amount: 0,
-  orderKey: ''
+  orderKey: null
 }
 
 export default new Vuex.Store({

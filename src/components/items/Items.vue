@@ -3,7 +3,7 @@
     <div class="columns is-gapless is-mobile" >
       <div class="column is-4" v-for="item in items" :key="item.id" @click="addToCart(item)">
         <div class="notify-container cursor-hand">
-          <span class="notify-bubble">0</span>
+          <span class="notify-bubble">{{ orders.filter(o => o.id === item.id)[0] ? orders.filter(o => o.id === item.id)[0].amount : 0  }}</span>
           <img class="is-96x96" src="../../assets/images-menu/2.jpg"/>
           <div class="text-background"></div>
           <div class="text">
@@ -22,7 +22,8 @@ export default {
   name: 'items',
   components: {},
   computed: mapGetters({
-    items: 'items'
+    items: 'items',
+    orders: 'orders'
   }),
   methods: mapActions([
     'addToCart'

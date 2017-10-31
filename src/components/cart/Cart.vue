@@ -77,7 +77,8 @@ export default {
   components: {},
   computed: mapGetters({
     orders: 'orders',
-    totalPrice: 'totalPrice'
+    totalPrice: 'totalPrice',
+    ordered: 'ordered'
   }),
   data () {
     return {
@@ -93,10 +94,13 @@ export default {
     },
     sendOrder () {
       const order = {
-        items: this.orders.map(item => {
-          item.status = 'NEW'
-          return item
-        }),
+        items: [
+          ...this.orders.map(item => {
+            item.status = 'NEW'
+            return item
+          }),
+          ...this.ordered
+        ],
         desk: this.desk,
         price: this.totalPrice,
         time: new Date().toString(),

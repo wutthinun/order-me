@@ -42,6 +42,10 @@ export default {
     db.child('orders').child(orderKey).update({ status: 'PAID' })
   },
 
+  [types.SET_ORDER_KEY] (state, {key}) {
+    state.orderKey = key
+  },
+
   addOrder (state, key) {
     if (state.orderList[key]) {
       state.orderList[key].amount += 1

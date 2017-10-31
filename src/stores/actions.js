@@ -15,7 +15,7 @@ export const getWholeOrders = ({ commit }) => {
 
 export const getOrdered = ({ commit }, orderKey) => {
   service.getOrdered(orderKey).then((orders) => {
-    const ordered = orders.item
+    const ordered = orders.items
     commit(types.GET_ORDERED, ordered)
   })
 }
@@ -24,4 +24,8 @@ export const getAllItems = ({ commit }, db) => commit(types.GET_ALL_ITEMS, db)
 
 export const purchase = ({commit}, { db, orderKey }) => commit(types.PURCHASE, { db, orderKey })
 
-export const initOrder = ({commit}) => service.initOrder()
+export const initOrder = ({commit}) => service.initOrder().then(
+  key => {
+    commit(types.SET_ORDER_KEY, { key })
+  }
+)
