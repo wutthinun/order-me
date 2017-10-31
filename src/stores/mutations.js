@@ -46,6 +46,21 @@ export default {
     state.orderKey = key
   },
 
+  [types.RESET_PURCHASE_ORDER] (state) {
+    state.bill.purchaseOrder = {}
+  },
+
+  [types.SET_PURCHASE_ORDER] (state, { order }) {
+    state.bill.purchaseOrder = order
+  },
+
+  [types.SET_UNPAID_ORDER] (state, { orders }) {
+    state.bill.unpaidOrder = _.map(orders, (item, key) => {
+      item.key = key
+      return item
+    })
+  },
+
   addOrder (state, key) {
     if (state.orderList[key]) {
       state.orderList[key].amount += 1

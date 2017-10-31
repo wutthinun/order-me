@@ -9,8 +9,17 @@ const getWholeOrders = async () => await data.getWholeOrders()
 
 const initOrder = async () => await data.initOrder()
 
+const getUnpaidOrder = async () => {
+  const orders = await data.getUnpaidOrder()
+  return orders.val()
+}
+
+const purchase = async (orderKey) => data.purchase(orderKey)
+
 export default {
   getOrdered,
   getWholeOrders,
-  initOrder
+  initOrder,
+  getUnpaidOrder,
+  purchase
 }

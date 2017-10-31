@@ -13,5 +13,12 @@ export const totalPrice = state => {
   state.cart.orders.forEach((o) => {
     price += (o.amount * o.price)
   })
+  state.cart.ordered.forEach((o) => {
+    price += (o.amount * o.price)
+  })
   return price
 }
+
+export const getPurchaseOrder = state => state.bill.purchaseOrder
+
+export const getUnpaidOrder = state => state.bill.unpaidOrder

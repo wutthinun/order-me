@@ -14,6 +14,10 @@ const state = {
   cook: {
     wholeOrders: []
   },
+  bill: {
+    purchaseOrder: {},
+    unpaidOrder: []
+  },
   order: {},
   item: {},
   items: [],

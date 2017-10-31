@@ -9,7 +9,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(value, key) in selected.item" :key="key">
+        <tr v-for="(value, key) in selected.items" :key="key">
           <td>{{ value.name }}</td>
           <td>{{ value.amount }}</td>
           <td>{{ value.price * value.amount }}</td>
@@ -45,26 +45,26 @@
         >Purchase</button>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-import db from '@/firebase.conf'
+import { mapGetters } from 'vuex'
 
 export default {
-  props: ['selected', 'orderKey'],
-  firebase: {
-    ordermeRef: db.child(localStorage.getItem('shop_id') || '123456789')
-  },
   data () {
     return {
       receive: 0
     }
   },
+  computed: {
+    ...mapGetters({
+      selected: 'getPurchaseOrder'
+    })
+  },
   methods: {
     purchase () {
-      this.$store.dispatch('purchase', { db: this.$firebaseRefs.ordermeRef, orderKey: this.orderKey })
+      this.$store.dispatch('purchase', { orderKey: this.selected.key })
     }
   }
 }

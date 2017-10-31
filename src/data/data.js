@@ -20,9 +20,15 @@ const initOrder = async () => {
   }).key
 }
 
+const getUnpaidOrder = async () => await db.child(localStorage.getItem('shop_id')).child('orders').orderByChild('status').equalTo('UNPAID').once('value')
+
+const purchase = async (orderKey) => await db.child(localStorage.getItem('shop_id')).child('orders').child(orderKey).update({ status: 'PAID' })
+
 export default {
   getShopById,
   getOrdered,
   getWholeOrders,
-  initOrder
+  initOrder,
+  getUnpaidOrder,
+  purchase
 }

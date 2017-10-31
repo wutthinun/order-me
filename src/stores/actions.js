@@ -22,10 +22,19 @@ export const getOrdered = ({ commit }, orderKey) => {
 
 export const getAllItems = ({ commit }, db) => commit(types.GET_ALL_ITEMS, db)
 
-export const purchase = ({commit}, { db, orderKey }) => commit(types.PURCHASE, { db, orderKey })
+export const purchase = ({commit}, { orderKey }) => {
+  service.purchase(orderKey)
+  commit(types.RESET_PURCHASE_ORDER)
+}
 
 export const initOrder = ({commit}) => service.initOrder().then(
   key => {
     commit(types.SET_ORDER_KEY, { key })
   }
 )
+
+export const resetPurchaseOrder = ({ commit }) => commit(types.RESET_PURCHASE_ORDER)
+
+export const setPurchaseOrder = ({ commit }, { order }) => commit(types.SET_PURCHASE_ORDER, { order })
+
+export const getUnpaidOrder = ({ commit }) => service.getUnpaidOrder().then(orders => commit(types.SET_UNPAID_ORDER, { orders }))

@@ -3,8 +3,8 @@
     <p class="panel-heading">
       Order list
     </p>
-    <div :class="{'panel-block': true, 'is-active': orderKey == key}" v-for="(value, key) in orders" :key="key"
-      @click="selected = value; orderKey = key; selectOrder()"
+    <div :class="{'panel-block': true, 'is-active': false}" v-for="(value, key) in orders" :key="key"
+      @click="setPurchaseOrder({order: value})"
     >
     <span class="panel-icon">
       <i class="fa fa-book"></i>
@@ -14,19 +14,22 @@
   </nav> 
 </template>
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
-  props: ['orders'],
-  data () {
-    return {
-      selected: {},
-      orderKey: ''
-    }
-  },
   methods: {
-    selectOrder () {
-      this.$emit('orderSelect', {selected: this.selected, orderKey: this.orderKey})
-    }
+    ...mapActions([
+      'getUnpaidOrder',
+      'setPurchaseOrder'
+    ])
+  },
+  computed: {
+    ...mapGetters({
+      orders: 'getUnpaidOrder'
+    })
+  },
+  mounted () {
+    this.getUnpaidOrder()
   }
 }
 </script>
-
