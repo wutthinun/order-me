@@ -22,10 +22,10 @@ export const getOrdered = ({ commit }, orderKey) => {
 
 export const getAllItems = ({ commit }, db) => commit(types.GET_ALL_ITEMS, db)
 
-export const purchase = ({commit}, { orderKey }) => {
+export const purchase = ({commit, dispatch}, { orderKey }) => {
   service.purchase(orderKey)
   commit(types.RESET_PURCHASE_ORDER)
-  this.getUnpaidOrder({ commit })
+  dispatch('getUnpaidOrder')
 }
 
 export const initOrder = ({commit}) => service.initOrder().then(
@@ -33,9 +33,3 @@ export const initOrder = ({commit}) => service.initOrder().then(
     commit(types.SET_ORDER_KEY, { key })
   }
 )
-
-export const resetPurchaseOrder = ({ commit }) => commit(types.RESET_PURCHASE_ORDER)
-
-export const setPurchaseOrder = ({ commit }, { order }) => commit(types.SET_PURCHASE_ORDER, { order })
-
-export const getUnpaidOrder = ({ commit }) => service.getUnpaidOrder().then(orders => commit(types.SET_UNPAID_ORDER, { orders }))

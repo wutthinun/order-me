@@ -18,7 +18,3 @@ export const totalPrice = state => {
   })
   return price
 }
-
-export const getPurchaseOrder = state => state.bill.purchaseOrder
-
-export const getUnpaidOrder = state => state.bill.unpaidOrder

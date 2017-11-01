@@ -1,6 +1,6 @@
 <template>
   <nav class="panel">
-    <p class="panel-heading">
+    <p class="panel-heading" @click="getUnpaidOrder">
       Order list
     </p>
     <div :class="{'panel-block': true, 'is-active': false}" v-for="(value, key) in orders" :key="key"
@@ -18,10 +18,10 @@ import { mapActions, mapGetters } from 'vuex'
 
 export default {
   methods: {
-    ...mapActions([
-      'getUnpaidOrder',
-      'setPurchaseOrder'
-    ])
+    ...mapActions({
+      getUnpaidOrder: 'getUnpaidOrder',
+      setPurchaseOrder: 'setPurchaseOrder'
+    })
   },
   computed: {
     ...mapGetters({

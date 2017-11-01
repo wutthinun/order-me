@@ -4,6 +4,8 @@ import * as actions from './actions'
 import * as getters from './getters'
 import mutations from './mutations'
 
+import bill from './bill'
+
 Vue.use(Vuex)
 
 const state = {
@@ -14,10 +16,6 @@ const state = {
   cook: {
     wholeOrders: []
   },
-  bill: {
-    purchaseOrder: {},
-    unpaidOrder: []
-  },
   order: {},
   item: {},
   items: [],
@@ -27,6 +25,9 @@ const state = {
 }
 
 export default new Vuex.Store({
+  modules: {
+    bill
+  },
   actions,
   state,
   mutations,

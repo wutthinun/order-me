@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     purchase () {
-      this.$store.dispatch('purchase', { orderKey: this.selected.key })
+      this.$store.dispatch('purchase', { orderKey: this.selected.key }).then(() => { this.receive = 0 })
     }
   }
 }
