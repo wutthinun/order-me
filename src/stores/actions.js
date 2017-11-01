@@ -25,6 +25,7 @@ export const getAllItems = ({ commit }, db) => commit(types.GET_ALL_ITEMS, db)
 export const purchase = ({commit}, { orderKey }) => {
   service.purchase(orderKey)
   commit(types.RESET_PURCHASE_ORDER)
+  this.getUnpaidOrder({ commit })
 }
 
 export const initOrder = ({commit}) => service.initOrder().then(
