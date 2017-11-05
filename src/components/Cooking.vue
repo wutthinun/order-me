@@ -32,14 +32,25 @@
             <tr>
               <th>Item</th>
               <th>Amount</th>
-              <!-- <th></th> -->
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(item, key2) in order.items" :key="key2">
               <td>{{ item.name }}</td>
               <td>{{ item.amount }}</td>
-              <!-- <td><button class="button is-small is-info" @click="increment(order)">done</button></td> -->
+              <td>
+                <div class="container is-fluid">
+                  <div class="is-pulled-right">
+                     <button class="button is-small is-info">
+                      <span>เสร็จแล้ว</span>
+                      <span class="icon">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                      </span>
+                      </button>
+                  </div>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
