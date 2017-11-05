@@ -122,8 +122,10 @@ export default {
   },
   mounted () {
     let [ orderKey ] = this.getUnpaidOrder.filter(o => o.desk === localStorage.getItem('desk') && o.status === 'UNPAID')
-    this.setOrderKey({ key: orderKey.key })
-    this.getOrdered(orderKey.key)
+    if (orderKey) {
+      this.setOrderKey({ key: orderKey.key })
+      this.getOrdered(orderKey.key)
+    }
   }
 }
 </script>
