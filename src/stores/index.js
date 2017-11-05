@@ -11,7 +11,8 @@ import cart from './cart'
 Vue.use(Vuex)
 
 const state = {
-  orderKey: null
+  orderKey: null,
+  items: []
 }
 
 export default new Vuex.Store({
