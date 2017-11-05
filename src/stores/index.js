@@ -6,21 +6,19 @@ import mutations from './mutations'
 
 import bill from './bill'
 import cook from './cook'
+import cart from './cart'
 
 Vue.use(Vuex)
 
 const state = {
-  cart: {
-    orders: [],
-    ordered: []
-  },
   orderKey: null
 }
 
 export default new Vuex.Store({
   modules: {
     bill,
-    cook
+    cook,
+    cart
   },
   actions,
   state,

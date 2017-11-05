@@ -68,8 +68,7 @@
 </template>
 
 <script>
-import db from '../../firebase.conf'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   props: [],
@@ -89,6 +88,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      saveOrders: 'saveOrder'
+    }),
     toggleMenu () {
       this.menuIsActive = !this.menuIsActive
     },
@@ -107,23 +109,8 @@ export default {
         status: 'UNPAID'
       }
 
-      if (this.$store.state.orderKey) {
-        db.child(localStorage.getItem('shop_id')).child('orders').child(this.$store.state.orderKey).update(order, (error) => {
-          if (error) {
-            console.error('ERROR: ', error)
-          } else {
-            this.isSuccess = true
-            console.info('Update success')
-            this.$store.dispatch('clearSelectCart')
-            this.$store.dispatch('getOrdered', this.$store.state.orderKey)
-          }
-        })
-      } else {
-        this.$store.state.orderKey = db.child(localStorage.getItem('shop_id')).child('orders').push(order).key
-        this.isSuccess = true
-        this.$store.dispatch('clearSelectCart')
-        this.$store.dispatch('getOrdered', this.$store.state.orderKey)
-      }
+      this.saveOrders({ order, orderKey: '' })
+      this.isSuccess = true
       setTimeout(() => {
         this.$router.back()
       }, 1500)

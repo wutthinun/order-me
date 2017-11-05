@@ -24,11 +24,27 @@ const getUnpaidOrder = async () => await db.child(localStorage.getItem('shop_id'
 
 const purchase = async (orderKey) => await db.child(localStorage.getItem('shop_id')).child('orders').child(orderKey).update({ status: 'PAID' })
 
+const saveOrder = async (order, orderkey) => {
+  if (orderkey) {
+    db.child(localStorage.getItem('shop_id')).child('orders').child(orderkey).update(order, (error) => {
+      if (error) {
+        console.error('ERROR: ', error)
+      } else {
+        console.info('Update success')
+      }
+    })
+  } else {
+    orderkey = db.child(localStorage.getItem('shop_id')).child('orders').push(order).key
+  }
+  return orderkey
+}
+
 export default {
   getShopById,
   getOrdered,
   getWholeOrders,
   initOrder,
   getUnpaidOrder,
-  purchase
+  purchase,
+  saveOrder
 }
