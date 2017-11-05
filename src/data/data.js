@@ -6,14 +6,6 @@ const getShopById = async id => await db.child('shop_id').child(id).once('value'
 
 const getOrdered = async (orderKey) => await shop.child('orders').child(orderKey).once('value')
 
-const getWholeOrders = async () => {
-  let wholeOrders = []
-  await shop.child('orders').on('value', snapshot => {
-    wholeOrders = snapshot.val()
-  })
-  return wholeOrders
-}
-
 const initOrder = async () => {
   return await shop.child('orders').push({
     desk: localStorage.getItem('desk'),
@@ -44,7 +36,6 @@ const saveOrder = async (order, orderkey) => {
 export default {
   getShopById,
   getOrdered,
-  getWholeOrders,
   initOrder,
   getUnpaidOrder,
   purchase,

@@ -1,7 +1,10 @@
-import data from '@/data/data'
+import data from '@/data/cook'
 
-export const getWholeOrders = async () => await data.getWholeOrders()
+const getWholeOrders = async () => await data.getWholeOrders()
+
+const finishedItem = async (orderKey, itemIndex) => await data.updateStatusItemOrder(orderKey, itemIndex, 'FINISHED')
 
 export default {
-  getWholeOrders
+  getWholeOrders,
+  finishedItem
 }

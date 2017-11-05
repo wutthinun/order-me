@@ -36,13 +36,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, key2) in order.items" :key="key2">
+            <tr v-for="(item, itemIndex) in order.items" :key="itemIndex">
               <td>{{ item.name }}</td>
               <td>{{ item.amount }}</td>
               <td>
                 <div class="container is-fluid">
                   <div class="is-pulled-right">
-                     <button class="button is-small is-info">
+                     <button class="button is-small is-info" @click="finishedItem({orderKey, itemIndex})">
                       <span>เสร็จแล้ว</span>
                       <span class="icon">
                         <i class="fa fa-check" aria-hidden="true"></i>
@@ -84,7 +84,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getWholeOrders'
+      'getWholeOrders',
+      'finishedItem'
     ]),
     done (orderKey) {
       this.$firebaseRefs.nomkafe.child('order').child(orderKey).update({status: 'DONE'})

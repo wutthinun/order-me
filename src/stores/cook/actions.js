@@ -6,3 +6,9 @@ export const getWholeOrders = ({ commit }) => {
     commit(types.GET_WHOLE_ORDERS, wholeOrders)
   })
 }
+
+export const finishedItem = ({ dispatch }, {orderKey, itemIndex}) => {
+  service.finishedItem(orderKey, itemIndex).then(() => {
+    dispatch('getWholeOrders')
+  })
+}
