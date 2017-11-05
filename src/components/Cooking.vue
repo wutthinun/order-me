@@ -42,12 +42,19 @@
               <td>
                 <div class="container is-fluid">
                   <div class="is-pulled-right">
-                     <button class="button is-small is-info" @click="finishedItem({orderKey, itemIndex})">
-                      <span>เสร็จแล้ว</span>
+                     <button v-if="item.status !== 'FINISHED'" class="button is-small is-info" @click="finishedItem({orderKey, itemIndex})">
+                      <span>พร้อมเสริฟ</span>
                       <span class="icon">
                         <i class="fa fa-check" aria-hidden="true"></i>
                       </span>
                       </button>
+
+                      <div v-if="item.status === 'FINISHED'" class="has-text-success">
+                          <span class="icon">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                          </span>
+                           <span>เสร็จแล้ว</span>
+                      </div>
                   </div>
                 </div>
               </td>
@@ -55,7 +62,7 @@
           </tbody>
         </table>
         <div class="column">
-          <button class="button is-success is-fullwidth" @click="done(orderKey)">Done</button>
+          <!-- <button class="button is-success is-fullwidth" @click="done(orderKey)">Done</button> -->
         </div>
       </div>
     </section>
