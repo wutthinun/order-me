@@ -7,12 +7,6 @@ export const clearSelectCart = ({ commit }) => {
   commit(types.CLEAR_SELECT_CART)
 }
 
-export const getWholeOrders = ({ commit }) => {
-  service.getWholeOrders().then(wholeOrders => {
-    commit(types.GET_WHOLE_ORDERS, wholeOrders)
-  })
-}
-
 export const getOrdered = ({ commit }, orderKey) => {
   service.getOrdered(orderKey).then((orders) => {
     const ordered = orders.items

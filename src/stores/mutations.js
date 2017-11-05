@@ -25,10 +25,6 @@ export default {
     state.cart.ordered = ordered
   },
 
-  [types.GET_WHOLE_ORDERS] (state, wholeOrders) {
-    state.cook.wholeOrders = wholeOrders
-  },
-
   [types.GET_ALL_ITEMS] (state, db) {
     db.child('items').on('value', snapshot => {
       state.items = _.map(snapshot.val(), (item, key) => {
