@@ -1,5 +1,12 @@
 <template>
   <div class="container is-centered">
+    <section class="hero is-medium">
+      <div class="hero-body" style=" padding: 1rem;">
+        <div class="container">
+          <logo />
+        </div>
+      </div>
+    </section>
     <section>
       <div class="columns">
         <div class="column">
@@ -45,21 +52,29 @@
   </div>
 </template>
 <script>
+
 import db from '../firebase.conf'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+
+import Logo from '@/components/Logo'
 export default {
   firebase: {
     nomkafe: db.child('123456789')
   },
+  components: {
+    'logo': Logo
+  },
   computed: mapGetters({
     wholeOrders: 'wholeOrders'
+
   }),
   data () {
-    return {
-      orders: {}
-    }
+    return {}
   },
   methods: {
+    ...mapActions([
+      'getWholeOrders'
+    ]),
     done (orderKey) {
       this.$firebaseRefs.nomkafe.child('order').child(orderKey).update({status: 'DONE'})
     }
@@ -68,6 +83,7 @@ export default {
     this.$firebaseRefs.nomkafe.child('order').orderByChild('status').equalTo('NEW').on('value', snapshot => {
       this.orders = snapshot.val()
     })
+    this.getWholeOrders()
   }
 }
 </script>
