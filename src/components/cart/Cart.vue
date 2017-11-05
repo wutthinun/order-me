@@ -13,7 +13,7 @@
     <hr class="line">
     <strong>ทั้งหมด {{ amount }} รายการ</strong>
     <hr class="line">
-    <div class="container is-fluid" style="margin-bottom: 2px" v-for="(item, index) in orders" :key="index">
+    <div class="container is-fluid" style="margin-bottom: 2px" v-for="(item, index) in [...orders, ...ordered]" :key="index">
       <article class="media">
         <figure class="media-left">
           <p class="image is-64x64">
@@ -46,7 +46,7 @@
       <div class="column is-offset-8">
         <strong>รวมเป็นเงิน {{ totalPrice }} ฿</strong>
       </div>
-      <button class="button is-success is-outlined is-large order-button" :disabled="totalPrice == 0" @click="sendOrder">
+      <button class="button is-success is-outlined is-large order-button" :disabled="orders.length == 0" @click="sendOrder">
         <span class="icon is-small order-icon">
           <i class="fa fa-lg fa-shopping-cart"></i>
         </span>
@@ -77,7 +77,8 @@ export default {
   computed: mapGetters({
     orders: 'orders',
     totalPrice: 'totalPrice',
-    ordered: 'ordered'
+    ordered: 'ordered',
+    orderKey: 'orderKey'
   }),
   data () {
     return {
@@ -109,7 +110,7 @@ export default {
         status: 'UNPAID'
       }
 
-      this.saveOrders({ order, orderKey: '' })
+      this.saveOrders({ order, orderKey: this.orderKey })
       this.isSuccess = true
       setTimeout(() => {
         this.$router.back()
