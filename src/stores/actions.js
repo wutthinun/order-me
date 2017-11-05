@@ -10,3 +10,5 @@ export const initOrder = ({commit}) => service.initOrder().then(
     commit(types.SET_ORDER_KEY, { key })
   }
 )
+
+export const setOrderKey = ({ commit }, { key }) => commit(types.SET_ORDER_KEY, { key })

@@ -78,7 +78,8 @@ export default {
     orders: 'orders',
     totalPrice: 'totalPrice',
     ordered: 'ordered',
-    orderKey: 'orderKey'
+    orderKey: 'orderKey',
+    getUnpaidOrder: 'getUnpaidOrder'
   }),
   data () {
     return {
@@ -90,7 +91,9 @@ export default {
   },
   methods: {
     ...mapActions({
-      saveOrders: 'saveOrder'
+      saveOrders: 'saveOrder',
+      setOrderKey: 'setOrderKey',
+      getOrdered: 'getOrdered'
     }),
     toggleMenu () {
       this.menuIsActive = !this.menuIsActive
@@ -118,6 +121,9 @@ export default {
     }
   },
   mounted () {
+    let [ orderKey ] = this.getUnpaidOrder.filter(o => o.desk === localStorage.getItem('desk') && o.status === 'UNPAID')
+    this.setOrderKey({ key: orderKey.key })
+    this.getOrdered(orderKey.key)
   }
 }
 </script>
