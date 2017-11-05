@@ -22,10 +22,12 @@ new Vue({
     ordermeRef: db.child(localStorage.getItem('shop_id') || '123456789')
   },
   methods: mapActions([
-    'getAllItems'
+    'getAllItems',
+    'getUnpaidOrder'
   ]),
   mounted () {
     this.getAllItems(this.$firebaseRefs.ordermeRef)
+    this.getUnpaidOrder()
   }
 })
 

@@ -7,3 +7,14 @@ export const saveOrder = async ({ commit, dispatch }, { order, orderKey }) => {
   dispatch('clearSelectCart')
   dispatch('getOrdered', key)
 }
+
+export const getOrdered = ({ commit }, orderKey) => {
+  service.getOrdered(orderKey).then((orders) => {
+    const ordered = orders.items
+    commit(types.GET_ORDERED, ordered)
+  })
+}
+
+export const clearSelectCart = ({ commit }) => {
+  commit(types.CLEAR_SELECT_CART)
+}

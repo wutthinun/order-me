@@ -6,3 +6,9 @@ export const resetPurchaseOrder = ({ commit }) => commit(types.RESET_PURCHASE_OR
 export const setPurchaseOrder = ({ commit }, { order }) => commit(types.SET_PURCHASE_ORDER, { order })
 
 export const getUnpaidOrder = ({ commit }) => service.getUnpaidOrder().then(orders => commit(types.SET_UNPAID_ORDER, { orders }))
+
+export const purchase = ({commit, dispatch}, { orderKey }) => {
+  service.purchase(orderKey)
+  commit(types.RESET_PURCHASE_ORDER)
+  dispatch('getUnpaidOrder')
+}
