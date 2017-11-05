@@ -37,3 +37,5 @@ export type Order = {
 export type Cook = {
   wholeOrders: [Order]
 }
+
+export type OrderedStatus = 'กำลังรอคิว' | 'ถึงคิวแล้ว'  | 'กำลังทำ' | 'เสร็จแล้ว' 
