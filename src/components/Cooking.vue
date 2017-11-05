@@ -64,14 +64,10 @@
 </template>
 <script>
 
-import db from '../firebase.conf'
 import { mapGetters, mapActions } from 'vuex'
 
 import Logo from '@/components/Logo'
 export default {
-  firebase: {
-    nomkafe: db.child('123456789')
-  },
   components: {
     'logo': Logo
   },
@@ -92,9 +88,6 @@ export default {
     }
   },
   mounted () {
-    this.$firebaseRefs.nomkafe.child('order').orderByChild('status').equalTo('NEW').on('value', snapshot => {
-      this.orders = snapshot.val()
-    })
     this.getWholeOrders()
   }
 }

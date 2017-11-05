@@ -10,13 +10,11 @@ const getWholeOrders = async () => {
   return wholeOrders
 }
 
-const updateStatusItemOrder = async (orderKey, itemIndex, status) => {
-  console.log(orderKey, itemIndex, status)
-  return await shop.child('orders').child(orderKey)
+const updateStatusItemOrder = async (orderKey, itemIndex, status) => await shop.child('orders').child(orderKey)
                                                                                .child('items')
                                                                                .child(itemIndex)
                                                                                .update({ status })
-}
+
 export default {
   getWholeOrders,
   updateStatusItemOrder
