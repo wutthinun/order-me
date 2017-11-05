@@ -14,11 +14,6 @@ const state = {
     orders: [],
     ordered: []
   },
-  order: {},
-  item: {},
-  items: [],
-  total: 0,
-  amount: 0,
   orderKey: null
 }
 
