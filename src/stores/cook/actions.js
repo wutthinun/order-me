@@ -1,5 +1,5 @@
 import * as types from '../mutation-types'
-import service from '@/services/services'
+import service from '@/services/cook'
 
 export const getWholeOrders = ({ commit }) => {
   service.getWholeOrders().then(wholeOrders => {
