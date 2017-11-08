@@ -107,8 +107,7 @@ export default {
           ...this.orders.map(item => {
             item.status = 'NEW'
             return item
-          }),
-          ...this.ordered
+          })
         ],
         desk: this.desk,
         price: this.totalPrice,
