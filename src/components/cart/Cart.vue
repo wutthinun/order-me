@@ -2,10 +2,10 @@
   <div>
     <nav class="navbar">
       <div class="navbar-brand">
-        <a class="navbar-item" href="#">
+        <a class="navbar-item" @click="goBack">
           <i class="fa fa-chevron-left" aria-hidden="true"></i>
         </a>
-        <a class="navbar-item" @click="router.back()">
+        <a class="navbar-item">
           <strong>หมายเลขโต๊ะ {{ desk }}</strong>
         </a>
       </div>
@@ -97,6 +97,9 @@ export default {
     }),
     toggleMenu () {
       this.menuIsActive = !this.menuIsActive
+    },
+    goBack() {
+      this.$router.back()
     },
     sendOrder () {
       const order = {

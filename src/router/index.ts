@@ -1,13 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Index from '@/components/Index'
-import Cooking from '@/components/Cooking'
-import Billing from '@/components/Bill'
-import MenuContainer from '@/components/MenuContainer'
-import Cart from '@/components/cart/Cart'
-import CheckIn from '@/components/checkin/CheckIn'
-import Login from '@/components/Login'
-import AdminContainer from '@/components/AdminContainer'
+import Cooking from '@/components/Cooking.vue'
+import Billing from '@/components/Bill.vue'
+import MenuContainer from '@/components/MenuContainer.vue'
+import Cart from '@/components/cart/Cart.vue'
+import CheckIn from '@/components/checkin/CheckIn.vue'
+import Login from '@/components/Login.vue'
+import AdminContainer from '@/components/AdminContainer.vue'
 
 Vue.use(Router)
 
