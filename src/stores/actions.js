@@ -3,7 +3,7 @@ import service from '@/services/services'
 
 export const addToCart = ({ commit }, item) => commit(types.ADD_TO_CART, { item })
 
-export const getAllItems = ({ commit }, db) => commit(types.GET_ALL_ITEMS, db)
+export const getAllItems = ({ commit }) => service.getItems().then(items => commit(types.GET_ALL_ITEMS, items))
 
 export const initOrder = ({commit}) => service.initOrder().then(
   key => {

@@ -33,11 +33,14 @@ const saveOrder = async (order, orderkey) => {
   return orderkey
 }
 
+const getItems = async () => await shop().child('items').once('value')
+
 export default {
   getShopById,
   getOrdered,
   initOrder,
   getUnpaidOrder,
   purchase,
-  saveOrder
+  saveOrder,
+  getItems
 }

@@ -20,7 +20,7 @@ new Vue({
     'getUnpaidOrder'
   ]),
   mounted () {
-    this.getAllItems(this.$firebaseRefs.ordermeRef)
+    this.getAllItems()
     this.getUnpaidOrder()
   }
 })

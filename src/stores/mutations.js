@@ -3,12 +3,10 @@ import Vue from 'vue'
 import _ from 'lodash'
 
 export default {
-  [types.GET_ALL_ITEMS] (state, db) {
-    db.child('items').on('value', snapshot => {
-      state.items = _.map(snapshot.val(), (item, key) => {
-        item.id = key
-        return item
-      })
+  [types.GET_ALL_ITEMS] (state, items) {
+    state.items = _.map(items, (item, key) => {
+      item.id = key
+      return item
     })
   },
 

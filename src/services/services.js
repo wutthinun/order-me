@@ -16,10 +16,16 @@ const purchase = async (orderKey) => data.purchase(orderKey)
 
 const saveOrder = async (order, orderKey) => data.saveOrder(order, orderKey)
 
+const getItems = async () => {
+  const items = await data.getItems()
+  return items.val()
+}
+
 export default {
   getOrdered,
   initOrder,
   getUnpaidOrder,
   purchase,
-  saveOrder
+  saveOrder,
+  getItems
 }
