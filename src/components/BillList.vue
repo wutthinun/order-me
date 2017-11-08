@@ -13,10 +13,11 @@
     </div>
   </nav> 
 </template>
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import { mapActions, mapGetters } from 'vuex'
 
-export default {
+export default Vue.extend({
   methods: {
     ...mapActions({
       getUnpaidOrder: 'getUnpaidOrder',
@@ -31,5 +32,5 @@ export default {
   mounted () {
     this.getUnpaidOrder()
   }
-}
+})
 </script>
