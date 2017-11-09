@@ -21,5 +21,9 @@ export default {
 
   [types.GET_ORDERED] (state, ordered) {
     state.ordered = ordered
+  },
+
+  [types.SET_SEND_ORDER_SUCCESS] (state) {
+    state.isSendOrderSuccess = !state.isSendOrderSuccess
   }
 }

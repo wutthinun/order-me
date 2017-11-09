@@ -17,13 +17,19 @@ const purchase = async (orderKey) => data.purchase(orderKey)
 const saveOrder = async (order, orderKey) => {
   if (orderKey) { 
     const ordered = await getOrdered(orderKey)
-    let newItem = [
-      ...ordered.items,
-      ...order.items
-    ]
-    order.items = newItem
+    if (ordered.status === 'UNPAID') {
+      let newItem = [
+        ...ordered.items,
+        ...order.items
+      ]
+      order.items = newItem
+      return await data.saveOrder(order, orderKey)
+    } else {
+      return null
+    }
+  } else {
+    return await data.saveOrder(order, orderKey)
   }
-  await data.saveOrder(order, orderKey)
 }
 
 const getItems = async () => {

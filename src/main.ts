@@ -4,7 +4,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './stores'
-import { mapActions } from 'vuex'
 
 Vue.config.productionTip = false
 
@@ -15,13 +14,5 @@ new Vue({
   template: '<App/>',
   components: { App },
   store,
-  methods: mapActions([
-    'getAllItems',
-    'getUnpaidOrder'
-  ]),
-  mounted () {
-    this.getAllItems()
-    this.getUnpaidOrder()
-  }
 })
 

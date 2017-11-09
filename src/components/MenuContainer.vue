@@ -16,13 +16,11 @@
 import HeaderBar from '@/components/Header'
 import Menus from '@/components/menus/Menus'
 import Items from '@/components/items/Items'
-import db from '@/firebase.conf'
+import { mapActions } from 'vuex'
+
 export default {
   props: [],
   name: 'menu-container',
-  firebase: {
-    ordermeRef: db.child('orders')
-  },
   components: {
     'header-bar': HeaderBar,
     'menus': Menus,
@@ -32,11 +30,17 @@ export default {
     return {}
   },
   methods: {
+    ...mapActions([
+      'getAllItems',
+      'getUnpaidOrder'
+    ]),
     goToCart () {
       this.$router.push({path: 'cart'})
     }
   },
   created () {
+    this.getAllItems()
+    this.getUnpaidOrder()
     // console.log('INIT ORDER')
     // this.$store.dispatch('initOrder')
   }

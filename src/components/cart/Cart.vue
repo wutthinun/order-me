@@ -79,11 +79,12 @@ export default {
     totalPrice: 'totalPrice',
     ordered: 'ordered',
     orderKey: 'orderKey',
-    getUnpaidOrder: 'getUnpaidOrder'
+    getUnpaidOrder: 'getUnpaidOrder',
+    isSuccess: 'isSendOrderSuccess'
   }),
   data () {
     return {
-      isSuccess: false,
+      // isSuccess: false,
       menuIsActive: false,
       amount: this.$store.state.amount,
       desk: localStorage.getItem('desk')
@@ -93,7 +94,8 @@ export default {
     ...mapActions({
       saveOrders: 'saveOrder',
       setOrderKey: 'setOrderKey',
-      getOrdered: 'getOrdered'
+      getOrdered: 'getOrdered',
+      setIsSendOrderSuccess: 'setIsSendOrderSuccess'
     }),
     toggleMenu () {
       this.menuIsActive = !this.menuIsActive
@@ -114,12 +116,17 @@ export default {
         time: new Date().toString(),
         status: 'UNPAID'
       }
-
       this.saveOrders({ order, orderKey: this.orderKey })
-      this.isSuccess = true
-      setTimeout(() => {
-        this.$router.back()
-      }, 1500)
+    }
+  },
+  watch: {
+    isSuccess() {
+      if (this.isSuccess) {
+        setTimeout(() => {
+          this.setIsSendOrderSuccess()
+          this.$router.back()
+        }, 1500)
+      }
     }
   },
   mounted () {

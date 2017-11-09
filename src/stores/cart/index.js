@@ -5,7 +5,8 @@ import * as getters from './getters'
 const cart = {
   state: {
     orders: [],
-    ordered: []
+    ordered: [],
+    isSendOrderSuccess: false
   },
   mutations,
   actions,
