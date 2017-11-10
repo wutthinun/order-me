@@ -25,20 +25,19 @@
           <th style="text-align: center">Receive</th>
           <th></th>
           <th>
-            <input class="input" v-model="receive" type="number" name="receive" id="receive"/>
+            <input class="input" v-model="receive" type="number" name="receive" min="0" @keypress="validatePrice" @focus="focus" id="receive"/>
           </th>
         </tr>
         <tr v-if="selected.price">
           <th style="text-align: center">Cash</th>
           <th></th>
           <th>
-            <label for="">{{ receive - (selected.price | 0 ) }}</label>
+            <label for="">{{ cash }}</label>
           </th>
         </tr>
       </tfoot>
     </table>
-
-    <div class="culumns is-desktop" v-if="receive != 0">
+    <div class="culumns is-desktop" v-if="cash >= 0">
       <div class="column">
         <button class="button is-success is-medium is-fullwidth"
           @click="purchase"
@@ -60,11 +59,22 @@ export default {
   computed: {
     ...mapGetters({
       selected: 'getPurchaseOrder'
-    })
+    }),
+    cash() {
+      return this.selected.price && this.receive - (this.selected.price | 0 )
+    }
   },
   methods: {
     purchase () {
       this.$store.dispatch('purchase', { orderKey: this.selected.key }).then(() => { this.receive = 0 })
+    },
+    validatePrice(e) {
+      const c = String.fromCharCode(e.charCode)
+      const p = new RegExp(/^[0-9]/)
+      if (!p.test(c)) e.returnValue = false
+    },
+    focus(e) {
+      if (+e.target.value === 0) e.target.value = ''
     }
   }
 }
